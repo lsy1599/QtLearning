@@ -1,4 +1,4 @@
-
+      
 
 ```
 #include <QApplication>
@@ -39,6 +39,3 @@ int main(int argc, char *argv[])
 
 
 ![image](https://github.com/zestroly/QtLearning/blob/master/learning/Splitter.png?raw=true)
-
-
-
