@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="/">
+    <file>res/factory_128px.ico</file>
+    <file>res/noimage.jpg</file>
+    <file>qss/themeSun/mainTabWidget.qss</file>
+  </qresource>
+</RCC>

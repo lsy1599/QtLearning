@@ -3,6 +3,10 @@
 
 #include <QMainWindow>
 #include "CameraBasePlugin.h"
+#include <QTabWidget>
+#include <QAction>
+#include <QList>
+#include <CameraDeviceForm.h>
 
 namespace Ui {
 class MainWindow;
@@ -19,6 +23,8 @@ public:
 
 private:
     Ui::MainWindow *ui;
-};
+    QList<CameraDeviceForm*> _cameraDeviceForm;
+    CameraBasePlugin* _Camera;
 
+};
 #endif // MAINWINDOW_H

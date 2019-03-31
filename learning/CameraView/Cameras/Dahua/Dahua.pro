@@ -50,5 +50,7 @@ DEPENDPATH += $$PWD/MVviewer/include
 
 DESTDIR =../../build/CameraPlugin/
 
-target.path = /root/CameraPlugin
-INSTALLS += target
+unix{
+        target.path = /root/CameraPlugin
+        INSTALLS += target
+}

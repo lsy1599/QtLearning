@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui concurrent
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -26,16 +26,24 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    CameraDeviceForm.cpp \
+    CameraBusManager.cpp
 
 HEADERS += \
         mainwindow.h \
-    CameraBasePlugin.h
+    CameraBasePlugin.h \
+    CameraDeviceForm.h \
+    CameraBusManager.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    CameraDeviceForm.ui
 
 DESTDIR =../build
 # Default rules for deployment.
 target.path = /root
 INSTALLS += target
+
+RESOURCES += \
+    res.qrc
