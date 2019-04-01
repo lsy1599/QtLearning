@@ -7,6 +7,7 @@
 #include <QAction>
 #include <QList>
 #include <CameraDeviceForm.h>
+#include <CameraBusManager.h>
 
 namespace Ui {
 class MainWindow;
@@ -19,12 +20,14 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void loadCameraPlugin();
+    void discoverCamera();
 
 private:
     Ui::MainWindow *ui;
     QList<CameraDeviceForm*> _cameraDeviceForm;
-    CameraBasePlugin* _Camera;
+
+    CameraBusManager _busManager;
+
 
 };
 #endif // MAINWINDOW_H

@@ -5,6 +5,7 @@
 #include <QQueue>
 #include <QtConcurrent/QtConcurrent>
 #include <QMutex>
+#include <QStatusBar>
 
 #include "CameraBasePlugin.h"
 
@@ -26,26 +27,28 @@ public:
 
     static void SelectCameraThread(CameraDeviceForm* cls);
 
-    bool InitCamera(CameraBasePlugin* camera);
+    bool InitCamera(CameraDevice* cameraDev);
     bool ExitCamera();
-
 
     bool Start();
     bool Stop();
 
 
+    void SetShowLabel(QString Item, QString text);
 signals:
     void ImageReadly(QImage *img);
+    void StatusMessageReadly(QString message);
 
 public slots:
     void ShowImage(QImage* img);
+    void ShowStatusMessage(QString message);
 
 protected:
     void resizeEvent(QResizeEvent* size);
 
 
 private slots:
-    void on_toolButton_clicked();
+    void on_Run_Button_clicked(bool checked);
 
 private:
     Ui::CameraDeviceForm *ui;
@@ -56,9 +59,16 @@ private:
     bool         _cameraThreadFlag = false;
 
     //相机资源
-    CameraBasePlugin* _cameraDevice = nullptr;
+    CameraDevice*     _cameraDev         = nullptr;
     bool              _isCameraAvailable = false;
     QMutex            _CameraUseLock;
+
+
+    QStatusBar* ui_statusBar;
+    qint64 _Total_Count = 0;
+    qint64 _OK_Count = 0;
+    qint64 _NG_Count = 0;
+
 };
 
 #endif // CAMERADEVICEFORM_H

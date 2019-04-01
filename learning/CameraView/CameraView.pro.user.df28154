@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.8.2, 2019-04-01T19:31:39. -->
+<!-- Written by QtCreator 4.8.2, 2019-04-01T00:09:12. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
-  <value type="QByteArray">{ae32d6f3-68ed-403f-a2cf-ec860ddd956a}</value>
+  <value type="QByteArray">{df28154f-0759-4efa-8299-84ff3ef9eb9f}</value>
  </data>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
@@ -55,21 +55,23 @@
  <data>
   <variable>ProjectExplorer.Project.PluginSettings</variable>
   <valuemap type="QVariantMap">
-   <valuelist type="QVariantList" key="ClangCodeModel.CustomCommandLineKey"/>
+   <valuelist type="QVariantList" key="ClangCodeModel.CustomCommandLineKey">
+    <value type="QString">-fno-delayed-template-parsing</value>
+   </valuelist>
    <value type="bool" key="ClangCodeModel.UseGlobalConfig">true</value>
   </valuemap>
  </data>
  <data>
   <variable>ProjectExplorer.Project.Target.0</variable>
   <valuemap type="QVariantMap">
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">rk3399</value>
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">rk3399</value>
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{5f4999a2-8a00-4060-97e6-76620cb36a2d}</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Desktop Qt 5.12.2 MSVC2017 32bit</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Desktop Qt 5.12.2 MSVC2017 32bit</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">qt.qt5.5122.win32_msvc2017_kit</value>
    <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveRunConfiguration">0</value>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.0">
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/vcoo/QtLearning/learning/build-CameraView-rk3399-Debug</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">E:/QtLearning/learning/build-CameraView-Desktop_Qt_5_12_2_MSVC2017_32bit-Debug</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -125,7 +127,7 @@
     <value type="bool" key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild">true</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.1">
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/vcoo/QtLearning/learning/build-CameraView-rk3399-Release</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">E:/QtLearning/learning/build-CameraView-Desktop_Qt_5_12_2_MSVC2017_32bit-Release</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -136,7 +138,7 @@
       <value type="QString" key="QtProjectManager.QMakeBuildStep.QMakeArguments"></value>
       <value type="bool" key="QtProjectManager.QMakeBuildStep.QMakeForced">false</value>
       <value type="bool" key="QtProjectManager.QMakeBuildStep.SeparateDebugInfo">false</value>
-      <value type="bool" key="QtProjectManager.QMakeBuildStep.UseQtQuickCompiler">false</value>
+      <value type="bool" key="QtProjectManager.QMakeBuildStep.UseQtQuickCompiler">true</value>
      </valuemap>
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.1">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -181,7 +183,7 @@
     <value type="bool" key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild">true</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.2">
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/vcoo/QtLearning/learning/build-CameraView-rk3399-Profile</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">E:/QtLearning/learning/build-CameraView-Desktop_Qt_5_12_2_MSVC2017_32bit-Profile</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -192,7 +194,7 @@
       <value type="QString" key="QtProjectManager.QMakeBuildStep.QMakeArguments"></value>
       <value type="bool" key="QtProjectManager.QMakeBuildStep.QMakeForced">false</value>
       <value type="bool" key="QtProjectManager.QMakeBuildStep.SeparateDebugInfo">true</value>
-      <value type="bool" key="QtProjectManager.QMakeBuildStep.UseQtQuickCompiler">false</value>
+      <value type="bool" key="QtProjectManager.QMakeBuildStep.UseQtQuickCompiler">true</value>
      </valuemap>
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.1">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -239,122 +241,15 @@
    <value type="int" key="ProjectExplorer.Target.BuildConfigurationCount">3</value>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.DeployConfiguration.0">
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
-     <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
-      <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
-      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">检测剩余的磁盘空间</value>
-      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
-      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">RemoteLinux.CheckForFreeDiskSpaceStep</value>
-      <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedFiles"/>
-      <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedHosts"/>
-      <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedRemotePaths"/>
-      <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedSysroots"/>
-      <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedTimes"/>
-      <value type="QString" key="RemoteLinux.CheckForFreeDiskSpaceStep.PathToCheck">/</value>
-      <value type="qulonglong" key="RemoteLinux.CheckForFreeDiskSpaceStep.RequiredSpace">5242880</value>
-     </valuemap>
-     <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.1">
-      <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
-      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Kill current application instance</value>
-      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
-      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">RemoteLinux.KillAppStep</value>
-      <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedFiles"/>
-      <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedHosts"/>
-      <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedRemotePaths"/>
-      <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedSysroots"/>
-      <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedTimes"/>
-     </valuemap>
-     <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.2">
-      <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
-      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">通过SFTP上传文件</value>
-      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
-      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">RemoteLinux.DirectUploadStep</value>
-      <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedFiles">
-       <value type="QString">/home/vcoo/QtLearning/learning/build-CameraView-rk3399-Debug/build/CameraPlugin/libTestCamera.so</value>
-       <value type="QString">/home/vcoo/QtLearning/learning/build-CameraView-rk3399-Debug/build/CameraPlugin/libDahua.so</value>
-       <value type="QString">/home/vcoo/QtLearning/learning/build-CameraView-rk3399-Debug/build/View</value>
-       <value type="QString">/home/vcoo/QtLearning/learning/CameraView/Cameras/Dahua/MVviewer/lib/liblog4cpp.so.5</value>
-       <value type="QString">/home/vcoo/QtLearning/learning/CameraView/Cameras/Dahua/MVviewer/lib/libXmlParser_gcc485_v3_0.so</value>
-       <value type="QString">/home/vcoo/QtLearning/learning/CameraView/Cameras/Dahua/MVviewer/lib/libMVSDK.so</value>
-       <value type="QString">/home/vcoo/QtLearning/learning/CameraView/Cameras/Dahua/MVviewer/lib/libLog_gcc485_v3_0.so</value>
-       <value type="QString">/home/vcoo/QtLearning/learning/CameraView/Cameras/Dahua/MVviewer/lib/libImageConvert.so</value>
-       <value type="QString">/home/vcoo/QtLearning/learning/CameraView/Cameras/Dahua/MVviewer/lib/libGCBase_gcc485_v3_0.so</value>
-       <value type="QString">/home/vcoo/QtLearning/learning/CameraView/Cameras/Dahua/MVviewer/lib/libNodeMapData_gcc485_v3_0.so</value>
-       <value type="QString">/home/vcoo/QtLearning/learning/CameraView/Cameras/Dahua/MVviewer/lib/libMathParser_gcc485_v3_0.so</value>
-       <value type="QString">/home/vcoo/QtLearning/learning/CameraView/Cameras/Dahua/MVviewer/lib/libGenApi_gcc485_v3_0.so</value>
-       <value type="QString">/home/vcoo/QtLearning/learning/CameraView/Cameras/Dahua/MVviewer/lib/liblog4cpp_gcc485_v3_0.so</value>
-      </valuelist>
-      <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedHosts">
-       <value type="QString">192.168.1.90</value>
-       <value type="QString">192.168.1.90</value>
-       <value type="QString">192.168.1.90</value>
-       <value type="QString">192.168.1.90</value>
-       <value type="QString">192.168.1.90</value>
-       <value type="QString">192.168.1.90</value>
-       <value type="QString">192.168.1.90</value>
-       <value type="QString">192.168.1.90</value>
-       <value type="QString">192.168.1.90</value>
-       <value type="QString">192.168.1.90</value>
-       <value type="QString">192.168.1.90</value>
-       <value type="QString">192.168.1.90</value>
-       <value type="QString">192.168.1.90</value>
-      </valuelist>
-      <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedRemotePaths">
-       <value type="QString">/root/CameraPlugin</value>
-       <value type="QString">/root/CameraPlugin</value>
-       <value type="QString">/root</value>
-       <value type="QString">/root/CameraPlugin/lib/</value>
-       <value type="QString">/root/CameraPlugin/lib/</value>
-       <value type="QString">/root/CameraPlugin/lib/</value>
-       <value type="QString">/root/CameraPlugin/lib/</value>
-       <value type="QString">/root/CameraPlugin/lib/</value>
-       <value type="QString">/root/CameraPlugin/lib/</value>
-       <value type="QString">/root/CameraPlugin/lib/</value>
-       <value type="QString">/root/CameraPlugin/lib/</value>
-       <value type="QString">/root/CameraPlugin/lib/</value>
-       <value type="QString">/root/CameraPlugin/lib/</value>
-      </valuelist>
-      <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedSysroots">
-       <value type="QString"></value>
-       <value type="QString"></value>
-       <value type="QString"></value>
-       <value type="QString"></value>
-       <value type="QString"></value>
-       <value type="QString"></value>
-       <value type="QString"></value>
-       <value type="QString"></value>
-       <value type="QString"></value>
-       <value type="QString"></value>
-       <value type="QString"></value>
-       <value type="QString"></value>
-       <value type="QString"></value>
-      </valuelist>
-      <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedTimes">
-       <value type="QDateTime">2019-04-01T17:43:22.013</value>
-       <value type="QDateTime">2019-04-01T17:43:21.840</value>
-       <value type="QDateTime">2019-04-01T19:30:51.627</value>
-       <value type="QDateTime">2019-04-01T11:17:46.477</value>
-       <value type="QDateTime">2019-04-01T11:17:47.314</value>
-       <value type="QDateTime">2019-04-01T11:17:46.322</value>
-       <value type="QDateTime">2019-04-01T11:17:47.101</value>
-       <value type="QDateTime">2019-04-01T11:17:47.418</value>
-       <value type="QDateTime">2019-04-01T11:17:46.578</value>
-       <value type="QDateTime">2019-04-01T11:17:46.679</value>
-       <value type="QDateTime">2019-04-01T11:17:47.475</value>
-       <value type="QDateTime">2019-04-01T11:17:47.005</value>
-       <value type="QDateTime">2019-04-01T11:17:47.629</value>
-      </valuelist>
-      <value type="bool" key="RemoteLinux.GenericDirectUploadStep.IgnoreMissingFiles">false</value>
-      <value type="bool" key="RemoteLinux.GenericDirectUploadStep.Incremental">true</value>
-     </valuemap>
-     <value type="int" key="ProjectExplorer.BuildStepList.StepsCount">3</value>
+     <value type="int" key="ProjectExplorer.BuildStepList.StepsCount">0</value>
      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">部署</value>
      <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
      <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.BuildSteps.Deploy</value>
     </valuemap>
     <value type="int" key="ProjectExplorer.BuildConfiguration.BuildStepListCount">1</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">部署到远程Linux主机</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Deploy Configuration</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">DeployToGenericLinux</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.DefaultDeployConfiguration</value>
    </valuemap>
    <value type="int" key="ProjectExplorer.Target.DeployConfigurationCount">1</value>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.PluginSettings"/>
@@ -398,25 +293,22 @@
      <value type="int">13</value>
      <value type="int">14</value>
     </valuelist>
-    <value type="int" key="PE.EnvironmentAspect.Base">1</value>
-    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes">
-     <value type="QString">DISPLAY=:0</value>
-    </valuelist>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">View (on rk3399-device)</value>
+    <value type="int" key="PE.EnvironmentAspect.Base">2</value>
+    <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">View</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">RemoteLinuxRunConfiguration:/home/vcoo/QtLearning/learning/CameraView/View/View.pro</value>
-    <value type="int" key="RemoteLinux.EnvironmentAspect.Version">1</value>
-    <value type="QString" key="RemoteLinux.RunConfig.AlternateRemoteExecutable"></value>
-    <value type="bool" key="RemoteLinux.RunConfig.UseAlternateRemoteExecutable">false</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:E:/QtLearning/learning/CameraView/View/View.pro</value>
+    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">View/View.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="uint" key="RunConfiguration.QmlDebugServerPort">3768</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
+    <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
     <value type="bool" key="RunConfiguration.UseMultiProcess">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory"></value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default"></value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">E:/QtLearning/learning/build-CameraView-Desktop_Qt_5_12_2_MSVC2017_32bit-Debug/build</value>
    </valuemap>
    <value type="int" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
   </valuemap>

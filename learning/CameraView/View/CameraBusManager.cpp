@@ -28,15 +28,28 @@ void CameraBusManager::loadCameraPlugin()
         QObject *plugin =loader.instance();
         if(plugin)
         {
-            QList<CameraBasePlugin::TCameraDevice*> CameraDeviceList;
-            CameraBasePlugin *camera = qobject_cast<CameraBasePlugin*>(plugin);
-            camera->GetCameraList(CameraDeviceList);
+            CameraBasePlugin *cameraPlugin = qobject_cast<CameraBasePlugin*>(plugin);
+            cameraPlugin->Discover(); //find camera
+            qDebug()<<cameraPlugin->CameraNumber();
+            for(int i =0; i < cameraPlugin->CameraNumber(); i++)
+            {
+                _cameraDevices.append((*cameraPlugin)[i]);
+            }
         }
-
     }
+}
 
+int CameraBusManager::CameraNumber()
+{
+    return _cameraDevices.size();
+}
 
-
-
-
+CameraDevice *CameraBusManager::operator[](int index)
+{
+    if(index >=0 && index < CameraNumber())
+    {
+        return _cameraDevices[index];
+    }else{
+        return nullptr;
+    }
 }

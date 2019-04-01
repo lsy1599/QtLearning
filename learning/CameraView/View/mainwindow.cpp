@@ -8,6 +8,8 @@
 #include <QHBoxLayout>
 #include <QGridLayout>
 #include <QPushButton>
+#include <QList>
+#include <QListIterator>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -19,9 +21,9 @@ MainWindow::MainWindow(QWidget *parent) :
     setMinimumSize(QSize(800, 600)); //窗口最小尺寸
     setCentralWidget(ui->tabWidgetMain); //设置为主窗口的中心窗口，会填充MainWindow的窗口
 
-    QFile qssfile(":/qss/themeSun/mainTabWidget.qss");
-    qssfile.open(QFile::ReadOnly);
-    ui->tabWidgetMain->setStyleSheet(qssfile.readAll());
+  //  QFile qssfile(":/qss/themeSun/mainTabWidget.qss");
+   // qssfile.open(QFile::ReadOnly);
+   // ui->tabWidgetMain->setStyleSheet(qssfile.readAll());
 
 
     QWidget* homeWidget = new QWidget(this);
@@ -47,6 +49,8 @@ MainWindow::MainWindow(QWidget *parent) :
                 j = 0;
                 k++;
             }
+            gridlayout->setColumnStretch(k, 1);
+            gridlayout->setRowStretch(j,1);
             cameraDeviceForm = new  CameraDeviceForm(this);
             gridlayout->addWidget(cameraDeviceForm, k, j);
             _cameraDeviceForm.append(cameraDeviceForm);
@@ -55,19 +59,25 @@ MainWindow::MainWindow(QWidget *parent) :
         if( cameraDeviceNumber >= 1){
             cameraDeviceForm = new  CameraDeviceForm(this);
             gridlayout->addWidget(cameraDeviceForm, 0, 0);
+            gridlayout->setColumnStretch(0,1);
             _cameraDeviceForm.append(cameraDeviceForm);
         }
         if( cameraDeviceNumber == 2){
             cameraDeviceForm = new  CameraDeviceForm(this);
             gridlayout->addWidget(cameraDeviceForm, 0, 1);
+            gridlayout->setColumnStretch(1,1);
             _cameraDeviceForm.append(cameraDeviceForm);
         }
     }
 
-    loadCameraPlugin();
+    discoverCamera();
 
+    for(int i = 0; i < _cameraDeviceForm.size(); i++)
+    {
+        _cameraDeviceForm[i]->InitCamera(_busManager[i]);
+    }
 
-    _cameraDeviceForm[0]->InitCamera(_Camera);
+    //_cameraDeviceForm[0]->InitCamera(_Camera);
 
 
 
@@ -78,29 +88,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::loadCameraPlugin()
+void MainWindow::discoverCamera()
 {
-    QDir CameraPluginDir("./");
-    CameraPluginDir.cd("CameraPlugin");
-
-    foreach(QString fileName, CameraPluginDir.entryList(QDir::Files))
-    {
-        QPluginLoader loader(CameraPluginDir.absoluteFilePath(fileName));
-        QObject *plugin =loader.instance();
-        if(plugin)
-        {
-            QList<CameraBasePlugin::TCameraDevice*> CameraDeviceList;
-            CameraBasePlugin *camera = qobject_cast<CameraBasePlugin*>(plugin);
-            camera->GetCameraList(CameraDeviceList);
-            foreach(auto CameraDevice, CameraDeviceList)
-            {
-                qDebug()<<CameraDevice->Type
-                       <<CameraDevice->ModelName
-                      <<CameraDevice->Ipaddress
-                     <<CameraDevice->VendorName
-                    <<CameraDevice->SerialNumber;
-            }
-            _Camera = camera;
-        }
-    }
+    _busManager.loadCameraPlugin();
 }

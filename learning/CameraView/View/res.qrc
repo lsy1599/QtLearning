@@ -1,7 +1,10 @@
 <RCC>
-  <qresource prefix="/">
-    <file>res/factory_128px.ico</file>
-    <file>res/noimage.jpg</file>
-    <file>qss/themeSun/mainTabWidget.qss</file>
-  </qresource>
+    <qresource prefix="/">
+        <file>res/factory_128px.ico</file>
+        <file>res/noimage.jpg</file>
+        <file>qss/themeSun/mainTabWidget.qss</file>
+        <file>res/no-image.jpg</file>
+        <file>res/Stop_red_64px.ico</file>
+        <file>res/Start_green_64px.net.ico</file>
+    </qresource>
 </RCC>

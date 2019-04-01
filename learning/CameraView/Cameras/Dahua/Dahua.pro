@@ -51,6 +51,20 @@ DEPENDPATH += $$PWD/MVviewer/include
 DESTDIR =../../build/CameraPlugin/
 
 unix{
+        MYLIBS.path=/root/CameraPlugin/lib/
+        MYLIBDIR=$${PWD}/MVviewer/lib/
+        MYLIBS.files+= $${MYLIBDIR}/libMVSDK.so \
+            $${MYLIBDIR}/liblog4cpp.so.5 \
+            $${MYLIBDIR}/libGCBase_gcc485_v3_0.so \
+            $${MYLIBDIR}/libNodeMapData_gcc485_v3_0.so \
+            $${MYLIBDIR}/libGenApi_gcc485_v3_0.so \
+            $${MYLIBDIR}/libLog_gcc485_v3_0.so \
+            $${MYLIBDIR}/libXmlParser_gcc485_v3_0.so \
+            $${MYLIBDIR}/libImageConvert.so \
+            $${MYLIBDIR}/libMathParser_gcc485_v3_0.so \
+            $${MYLIBDIR}/liblog4cpp_gcc485_v3_0.so
+        INSTALLS +=MYLIBS
+
         target.path = /root/CameraPlugin
         INSTALLS += target
 }

@@ -22,6 +22,7 @@ SOURCES += \
 
 HEADERS += \
     TestCameraPlugin.h
+
 DISTFILES += TestCamera.json 
 
 unix {
