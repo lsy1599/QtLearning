@@ -22,10 +22,13 @@ public:
     ~MainWindow();
     void discoverCamera();
 
+    void InitHomeWidget();
+    void InitCameraWidget();
+
 private:
     Ui::MainWindow *ui;
-    QList<CameraDeviceForm*> _cameraDeviceForm;
 
+    QList<CameraDeviceForm*> _cameraDeviceForm;
     CameraBusManager _busManager;
 
 

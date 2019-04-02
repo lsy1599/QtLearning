@@ -10,6 +10,7 @@
 #include <QPushButton>
 #include <QList>
 #include <QListIterator>
+#include <CameraInfoForm.h>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -25,17 +26,28 @@ MainWindow::MainWindow(QWidget *parent) :
    // qssfile.open(QFile::ReadOnly);
    // ui->tabWidgetMain->setStyleSheet(qssfile.readAll());
 
+    discoverCamera();
+
+    InitHomeWidget();
+    showMaximized();
+
+    for(int i = 0; i < _cameraDeviceForm.size(); i++)
+    {
+        _cameraDeviceForm[i]->InitCamera(_busManager[i]);
+    }
+
+    InitCameraWidget();
+
+}
+
+
+void MainWindow::InitHomeWidget()
+{
 
     QWidget* homeWidget = new QWidget(this);
     ui->tabWidgetMain->addTab(homeWidget,tr("Home"));
 
-    QWidget* cameraWidget = new QWidget(this);
-    ui->tabWidgetMain->addTab(cameraWidget,tr("Camera"));
-    showMaximized();
-
-
-    qDebug()<<ui->tabWidgetMain->widget(0)->size();
-    QGridLayout *gridlayout = new QGridLayout(ui->tabWidgetMain->widget(0));
+    QGridLayout *gridlayout = new QGridLayout(homeWidget);
 
     CameraDeviceForm* cameraDeviceForm;
     int cameraDeviceNumber = 4;
@@ -69,19 +81,21 @@ MainWindow::MainWindow(QWidget *parent) :
             _cameraDeviceForm.append(cameraDeviceForm);
         }
     }
-
-    discoverCamera();
-
-    for(int i = 0; i < _cameraDeviceForm.size(); i++)
-    {
-        _cameraDeviceForm[i]->InitCamera(_busManager[i]);
-    }
-
-    //_cameraDeviceForm[0]->InitCamera(_Camera);
+}
 
 
+void MainWindow::InitCameraWidget()
+{
+    QWidget* cameraWidget = nullptr;
+    cameraWidget = new QWidget(this);
+    ui->tabWidgetMain->addTab(cameraWidget,tr("Camera"));
+
+    QGridLayout *gridlayout = new QGridLayout(cameraWidget);
+    gridlayout->addWidget(new CameraInfoForm(_cameraDeviceForm, _busManager, this));
 
 }
+
+
 
 MainWindow::~MainWindow()
 {
@@ -92,3 +106,5 @@ void MainWindow::discoverCamera()
 {
     _busManager.loadCameraPlugin();
 }
+
+

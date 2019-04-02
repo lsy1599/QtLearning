@@ -28,17 +28,20 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     CameraDeviceForm.cpp \
-    CameraBusManager.cpp
+    CameraBusManager.cpp \
+    CameraInfoForm.cpp
 
 HEADERS += \
         mainwindow.h \
     CameraBasePlugin.h \
     CameraDeviceForm.h \
-    CameraBusManager.h
+    CameraBusManager.h \
+    CameraInfoForm.h
 
 FORMS += \
         mainwindow.ui \
-    CameraDeviceForm.ui
+    CameraDeviceForm.ui \
+    CameraInfoForm.ui
 
 DESTDIR =../build
 # Default rules for deployment.

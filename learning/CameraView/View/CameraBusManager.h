@@ -17,8 +17,6 @@ public:
 
     void loadCameraPlugin();
 
-
-
     int  CameraNumber();
     CameraDevice *operator[](int index);
 signals:
