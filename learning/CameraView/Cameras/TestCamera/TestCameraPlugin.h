@@ -22,9 +22,9 @@ public:
             bool Stop();
             bool Open();
             bool Close();
-            bool GetOneImage(QImage &img);
-
-            bool SetParameter(QString Key, QString Value);
+            bool GetOneImage(QImage &img, int timeout = 1000);
+            bool SetParameter(const QString Key, const QString Value);
+            bool GetParameter(const QString Key, QString &Value);
 
         private:
             QString _DirPath;

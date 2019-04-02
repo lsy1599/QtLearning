@@ -1,6 +1,7 @@
 #include "CameraDeviceForm.h"
 #include "ui_CameraDeviceForm.h"
 #include <QDebug>
+#include <QTime>
 
 CameraDeviceForm::CameraDeviceForm(QWidget *parent) :
     QWidget(parent),
@@ -27,7 +28,7 @@ void CameraDeviceForm::SelectCameraThread(CameraDeviceForm *cls)
     {
         QImage* image = new QImage;
         cls->_CameraUseLock.lock();
-        if(cls->_cameraDev->GetOneImage(*image))
+        if(cls->_cameraDev->GetOneImage(*image, 500))
         {
             cls->_OK_Count++;
             emit cls->ImageReadly(image);
@@ -91,18 +92,43 @@ void CameraDeviceForm::SetShowLabel(QString Item, QString text)
     }else if(Item == "NG") {
         ui->NG_Count->setText(text);
     }else if(Item == "Resolution") {
-
+        ui->ui_ratio->setText(text);
+    }else if(Item =="Rate") {
+        ui->ui_rate->setText(text);
+    }else if(Item =="TransSpeed") {
+        ui->ui_Speed->setText(text);
     }
 
 }
 
 void CameraDeviceForm::ShowImage(QImage *img)
 {
+
+    QTime nowtime = QTime::currentTime();
+    if(nowtime.second() == _timebuff.second())
+    {
+        _FrameRate++;
+        _TransSpeed += img->width() * img->height() * img->depth()/8;
+    }else{
+        _TransSpeed += img->width()*img->height()* img->depth()/8;
+        _FrameRate++;
+        _timebuff = nowtime;
+        _FrameRateShow = _FrameRate;
+        _TransSpeedShow = _TransSpeed/1024/1024;
+        _TransSpeed = 0;
+        _FrameRate = 0;
+    }
+
     ui->Image->setPixmap(QPixmap::fromImage(*img));
-    SetShowLabel("Total", QString::number(_Total_Count));
-    SetShowLabel("OK", QString::number(_OK_Count));
-    SetShowLabel("NG", QString::number(_NG_Count));
+    SetShowLabel("Total",QString("Total:%1").arg(_Total_Count));
+    SetShowLabel("OK", QString("Ok:%1").arg(_OK_Count));
+    SetShowLabel("NG", QString("Error:%1").arg(_NG_Count));
     SetShowLabel("Resolution", QString("%1x%2").arg(img->width()).arg(img->height()));
+    SetShowLabel("TransSpeed", QString("%1M/s").arg(_TransSpeedShow));
+    SetShowLabel("Rate", QString("%1fps").arg(_FrameRateShow));
+
+
+
     // ShowStatusMessage(QString("%1x%2").arg(img->width()).arg(img->height()));
     delete img;
 }

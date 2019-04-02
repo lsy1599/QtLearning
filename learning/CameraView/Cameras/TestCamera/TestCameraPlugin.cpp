@@ -54,9 +54,9 @@ bool TestCamera::CameraTest::Close()
     return true;
 }
 
-bool TestCamera::CameraTest::GetOneImage(QImage &img)
+bool TestCamera::CameraTest::GetOneImage(QImage &img, int timeout)
 {
-    QThread::msleep(500);
+    QThread::msleep(timeout);
     if(_it != _files.end())
     {
         img.load("image/"+*_it);
@@ -74,13 +74,19 @@ bool TestCamera::CameraTest::GetOneImage(QImage &img)
     }
 }
 
-bool TestCamera::CameraTest::SetParameter(QString Key, QString Value)
+bool TestCamera::CameraTest::SetParameter(const QString Key, const QString Value)
 {
     if(Key == "DirPath")
     {
         _DirPath = Value;
         return true;
     }
+
+    return false;
+}
+
+bool TestCamera::CameraTest::GetParameter(const QString Key, QString &Value)
+{
 
     return false;
 }

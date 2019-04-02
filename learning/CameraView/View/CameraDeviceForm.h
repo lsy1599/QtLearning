@@ -8,6 +8,7 @@
 #include <QStatusBar>
 
 #include "CameraBasePlugin.h"
+#include <QTime>
 
 namespace Ui {
 class CameraDeviceForm;
@@ -68,6 +69,12 @@ private:
     qint64 _Total_Count = 0;
     qint64 _OK_Count = 0;
     qint64 _NG_Count = 0;
+
+    int    _FrameRate = 0;
+    int    _FrameRateShow = 0;
+    int    _TransSpeed = 0;
+    int    _TransSpeedShow = 0;
+    QTime  _timebuff = QTime::currentTime();
 
 };
 

@@ -30,7 +30,7 @@ void CameraBusManager::loadCameraPlugin()
         {
             CameraBasePlugin *cameraPlugin = qobject_cast<CameraBasePlugin*>(plugin);
             cameraPlugin->Discover(); //find camera
-            qDebug()<<cameraPlugin->CameraNumber();
+            qDebug()<<fileName<<cameraPlugin->CameraNumber();
             for(int i =0; i < cameraPlugin->CameraNumber(); i++)
             {
                 _cameraDevices.append((*cameraPlugin)[i]);

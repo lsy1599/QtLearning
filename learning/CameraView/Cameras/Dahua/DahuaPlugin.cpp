@@ -1413,12 +1413,12 @@ bool DahuaPlugin::CameraDahua::Close()
     return true;
 }
 
-bool DahuaPlugin::CameraDahua::GetOneImage(QImage &img)
+bool DahuaPlugin::CameraDahua::GetOneImage(QImage &img, int timeout)
 {
     if(_streamPtr)
     {
         CFrame frame;
-        bool isSuccess = _streamPtr->getFrame(frame, 300);
+        bool isSuccess = _streamPtr->getFrame(frame, timeout);
         if(isSuccess)
         {
             if(frame.valid())
@@ -1433,5 +1433,24 @@ bool DahuaPlugin::CameraDahua::GetOneImage(QImage &img)
             qDebug()<<"GetFrame failed.";
         }
     }
+    return false;
+}
+
+bool DahuaPlugin::CameraDahua::SetParameter(const QString Key, const QString Value)
+{
+
+    return false;
+}
+
+bool DahuaPlugin::CameraDahua::GetParameter(const QString Key, QString &Value)
+{
+    if(Key == "FrameRate")
+    {
+        double dframeRate;
+        getAcquisitionFrameRate(_cameraSptr,dframeRate);
+        Value = QString::number(dframeRate);
+        return true;
+    }
+
     return false;
 }

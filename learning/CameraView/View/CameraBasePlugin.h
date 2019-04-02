@@ -8,14 +8,15 @@
 
 class CameraDevice{
 public:
-    virtual bool Start() {return false;}
-    virtual bool Stop() {return false;}
-    virtual bool Open() {return false;}
-    virtual bool Close() {return false;}
+    virtual bool Start() = 0;
+    virtual bool Stop() = 0;
+    virtual bool Open() = 0;
+    virtual bool Close() = 0;
 
-    virtual bool SetParameter(QString Key, QString Value){(void)Key;(void)Value;return false;}
+    virtual bool SetParameter(const QString Key, const QString Value) = 0;
+    virtual bool GetParameter(const QString Key, QString &Value) = 0;
 
-    virtual bool GetOneImage(QImage &img){img.load("://res/no-image.jpg"); return false;}
+    virtual bool GetOneImage(QImage &img, int timeout = 1000)=0;
 
     int CameraIndex = -1;
     QString VendorName;
