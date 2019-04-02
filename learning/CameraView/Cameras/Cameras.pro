@@ -1,6 +1,6 @@
 TEMPLATE = subdirs
 
-CONFIG += LINUX_ARM64
+#CONFIG += LINUX_ARM64
 
 LINUX_ARM64 {
     SUBDIRS += Dahua

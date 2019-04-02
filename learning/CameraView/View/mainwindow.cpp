@@ -11,6 +11,7 @@
 #include <QList>
 #include <QListIterator>
 #include <CameraInfoForm.h>
+#include <WidgetLogForm.h>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -29,7 +30,6 @@ MainWindow::MainWindow(QWidget *parent) :
     discoverCamera();
 
     InitHomeWidget();
-    showMaximized();
 
     for(int i = 0; i < _cameraDeviceForm.size(); i++)
     {
@@ -38,6 +38,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     InitCameraWidget();
 
+    showMaximized();
+
+    InitLogWidget();
 }
 
 
@@ -92,7 +95,15 @@ void MainWindow::InitCameraWidget()
 
     QGridLayout *gridlayout = new QGridLayout(cameraWidget);
     gridlayout->addWidget(new CameraInfoForm(_cameraDeviceForm, _busManager, this));
+}
 
+void MainWindow::InitLogWidget()
+{
+    QWidget* LogWidget = new QWidget(this);
+    ui->tabWidgetMain->addTab(LogWidget,tr("Log"));
+    QGridLayout *gridlayout = new QGridLayout(LogWidget);
+    WidgetLogForm *logForm = new WidgetLogForm(this);
+    gridlayout->addWidget(logForm);
 }
 
 

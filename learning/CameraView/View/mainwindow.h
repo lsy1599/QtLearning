@@ -24,6 +24,7 @@ public:
 
     void InitHomeWidget();
     void InitCameraWidget();
+    void InitLogWidget();
 
 private:
     Ui::MainWindow *ui;
