@@ -6,6 +6,7 @@
 #include <CameraBasePlugin.h>
 #include <CameraDeviceForm.h>
 #include <QList>
+#include <QTreeWidgetItem>
 
 namespace Ui {
 class CameraInfoForm;
@@ -21,6 +22,11 @@ public:
                             QWidget *parent = nullptr);
     ~CameraInfoForm();
     void InitCamerasList();
+
+public slots:
+    void on_TreeWidgetDoubleClicked(QTreeWidgetItem* item,int index);
+
+
 
 private:
     Ui::CameraInfoForm *ui;

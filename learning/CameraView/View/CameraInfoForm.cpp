@@ -84,4 +84,20 @@ void CameraInfoForm::InitCamerasList()
         }
 
     }
+
+    ui->treeWidget->expandAll();
+    connect(ui->treeWidget, &QTreeWidget::itemDoubleClicked, this, &CameraInfoForm::on_TreeWidgetDoubleClicked);
+
+
+
+}
+
+void CameraInfoForm::on_TreeWidgetDoubleClicked(QTreeWidgetItem *item, int index)
+{
+    bool ok;
+    int clickCamera = item->text(0).toInt(&ok);
+    if(!ok)
+        return;
+
+    qDebug()<<clickCamera ;
 }
