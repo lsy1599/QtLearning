@@ -26,6 +26,8 @@ public:
             bool SetParameter(const QString Key, const QString Value);
             bool GetParameter(const QString Key, QString &Value);
 
+            bool GetParameterList(QStringList & keys);
+
         private:
             QString _DirPath;
             QDir *_Dir;

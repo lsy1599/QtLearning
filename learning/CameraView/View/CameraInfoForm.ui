@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>873</width>
-    <height>546</height>
+    <width>496</width>
+    <height>425</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -32,7 +32,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QListWidget" name="listWidget">
+      <widget class="QTableWidget" name="tableWidget">
        <property name="styleSheet">
         <string notr="true">background-color: rgb(170, 170, 255);</string>
        </property>

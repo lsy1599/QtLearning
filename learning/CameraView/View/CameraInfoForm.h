@@ -7,10 +7,14 @@
 #include <CameraDeviceForm.h>
 #include <QList>
 #include <QTreeWidgetItem>
+#include <QAbstractTableModel>
+
+#include <QVariant>
 
 namespace Ui {
 class CameraInfoForm;
 }
+class CameraInfoFormTableWidgetModel;
 
 class CameraInfoForm : public QWidget
 {
@@ -33,6 +37,28 @@ private:
 
     QList<CameraDeviceForm*> &_cameraDeviceForm;
     CameraBusManager &_busManager;
+//    CameraInfoFormTableWidgetModel *_tableModel;
 };
 
+
+class CameraInfoFormTableWidgetModel: public QAbstractTableModel
+{
+    Q_OBJECT
+public:
+    CameraInfoFormTableWidgetModel(QObject* parent = nullptr);
+
+    QVariant data(const QModelIndex &index, int role) const;
+    int rowCount(const QModelIndex &parent) const;
+    int columnCount(const QModelIndex &parent) const;
+
+private:
+
+};
+
+
+
+
+
+
 #endif // CAMERAINFOFORM_H
+

@@ -25,6 +25,8 @@ HEADERS += \
 
 DISTFILES += TestCamera.json 
 
+message($$DISTFILES)
+
 unix {
         target.path = /root/CameraPlugin
         INSTALLS += target

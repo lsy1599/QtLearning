@@ -91,6 +91,13 @@ bool TestCamera::CameraTest::GetParameter(const QString Key, QString &Value)
     return false;
 }
 
+bool TestCamera::CameraTest::GetParameterList(QStringList &keys)
+{
+
+
+    return false;
+}
+
 CameraDevice *TestCamera::operator[](int index)
 {
     if(index >=0 && index < _Cameras.size())
