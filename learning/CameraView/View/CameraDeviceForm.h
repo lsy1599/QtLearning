@@ -28,12 +28,13 @@ public:
 
     static void SelectCameraThread(CameraDeviceForm* cls);
 
-    bool InitCamera(CameraDevice* cameraDev);
-    bool ExitCamera();
+    bool BindCamera(CameraDevice* cameraDev, int index);
+    bool UnbindCamera();
 
     bool Start();
     bool Stop();
 
+    int getBindCameraIndex();
 
     void SetShowLabel(QString Item, QString text);
 signals:
@@ -61,6 +62,7 @@ private:
 
     //相机资源
     CameraDevice*     _cameraDev         = nullptr;
+    int               _cameraIndex       = -1;
     bool              _isCameraAvailable = false;
     QMutex            _CameraUseLock;
 

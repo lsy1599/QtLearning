@@ -8,6 +8,8 @@
 #include <QList>
 #include <QTreeWidgetItem>
 #include <QAbstractTableModel>
+#include <QItemDelegate>
+#include <QModelIndex>
 
 #include <QVariant>
 
@@ -15,6 +17,7 @@ namespace Ui {
 class CameraInfoForm;
 }
 class CameraInfoFormTableWidgetModel;
+class ComBoxDelegate;
 
 class CameraInfoForm : public QWidget
 {
@@ -27,8 +30,14 @@ public:
     ~CameraInfoForm();
     void InitCamerasList();
 
+
+    void InitCameraTableWidget();
+
+
 public slots:
     void on_TreeWidgetDoubleClicked(QTreeWidgetItem* item,int index);
+
+    void DisplayCameraChange(const QString &text);
 
 
 
@@ -37,6 +46,7 @@ private:
 
     QList<CameraDeviceForm*> &_cameraDeviceForm;
     CameraBusManager &_busManager;
+    int  _CurrentCamera = -1;
 //    CameraInfoFormTableWidgetModel *_tableModel;
 };
 
@@ -55,6 +65,17 @@ private:
 
 };
 
+
+class ComBoxDelegate: public QItemDelegate
+{
+    Q_OBJECT
+public:
+    ComBoxDelegate(QObject* parent = nullptr);
+    void setModelData(QWidget* editor, QAbstractItemModel* model, const QModelIndex& index)const;
+
+
+
+};
 
 
 

@@ -4,6 +4,7 @@
 #
 #-------------------------------------------------
 
+include(../share.pri)
 QT       += core gui concurrent
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -30,7 +31,8 @@ SOURCES += \
     CameraDeviceForm.cpp \
     CameraBusManager.cpp \
     CameraInfoForm.cpp \
-    WidgetLogForm.cpp
+    WidgetLogForm.cpp \
+    UIConfig.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -38,7 +40,8 @@ HEADERS += \
     CameraDeviceForm.h \
     CameraBusManager.h \
     CameraInfoForm.h \
-    WidgetLogForm.h
+    WidgetLogForm.h \
+    UIConfig.h
 
 FORMS += \
         mainwindow.ui \
@@ -47,6 +50,7 @@ FORMS += \
     WidgetLogForm.ui
 
 DESTDIR =../build
+
 # Default rules for deployment.
 target.path = /root
 INSTALLS += target

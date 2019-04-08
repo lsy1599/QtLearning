@@ -26,6 +26,9 @@ public:
     void InitCameraWidget();
     void InitLogWidget();
 
+    void AutoBridgeConnectionCamera();
+    void     BridgeConnectionCamera();
+
 private:
     Ui::MainWindow *ui;
 

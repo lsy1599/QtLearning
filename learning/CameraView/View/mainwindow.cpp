@@ -4,6 +4,7 @@
 #include <QString>
 #include <QPluginLoader>
 #include <QDebug>
+#include <QTimer>
 #include <QTextCodec>
 #include <QHBoxLayout>
 #include <QGridLayout>
@@ -12,6 +13,7 @@
 #include <QListIterator>
 #include <CameraInfoForm.h>
 #include <WidgetLogForm.h>
+#include <UIConfig.h>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -31,14 +33,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     InitHomeWidget();
 
-    for(int i = 0; i < _cameraDeviceForm.size(); i++)
-    {
-        _cameraDeviceForm[i]->InitCamera(_busManager[i]);
-    }
-
     InitCameraWidget();
 
-   // showMaximized();
+    showMaximized();
 
     InitLogWidget();
 }
@@ -53,7 +50,11 @@ void MainWindow::InitHomeWidget()
     QGridLayout *gridlayout = new QGridLayout(homeWidget);
 
     CameraDeviceForm* cameraDeviceForm;
-    int cameraDeviceNumber = 4;
+
+    UIConfig uiconfig;
+    int cameraDeviceNumber = uiconfig.value("MainWindows/Cameras", "2").toInt();
+
+
     int cameraDeviceCols =  (cameraDeviceNumber + 1)/2;
     if(cameraDeviceNumber >=3)
     {
@@ -104,6 +105,19 @@ void MainWindow::InitLogWidget()
     QGridLayout *gridlayout = new QGridLayout(LogWidget);
     WidgetLogForm *logForm = new WidgetLogForm(this);
     gridlayout->addWidget(logForm);
+}
+
+void MainWindow::AutoBridgeConnectionCamera()
+{
+    for(int i = 0; i < _cameraDeviceForm.size(); i++)
+    {
+        _cameraDeviceForm[i]->BindCamera(_busManager[i], i);
+    }
+}
+
+void MainWindow::BridgeConnectionCamera()
+{
+
 }
 
 

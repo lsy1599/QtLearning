@@ -3,6 +3,7 @@
 
 #include <QHeaderView>
 #include <QScrollBar>
+#include <QComboBox>
 
 CameraInfoForm::CameraInfoForm(QList<CameraDeviceForm *> &CameraWorkDocker, CameraBusManager &CameraBusManager, QWidget *parent):
     QWidget(parent),
@@ -93,15 +94,19 @@ void CameraInfoForm::InitCamerasList()
 
 }
 
-void CameraInfoForm::on_TreeWidgetDoubleClicked(QTreeWidgetItem *item, int index)
+void CameraInfoForm::InitCameraTableWidget()
+{
+
+}
+
+void CameraInfoForm::on_TreeWidgetDoubleClicked(QTreeWidgetItem *item, int Index)
 {
     bool ok;
     int clickCamera = item->text(0).toInt(&ok);
     if(!ok)
         return;
 
-    qDebug()<<clickCamera ;
-
+    _CurrentCamera = clickCamera;
     //_tableModel =  new CameraInfoFormTableWidgetModel(this);
     //ui->tableWidget->setModel(_tableModel);
     ui->tableWidget->clear(); //清理所有数据，行还在
@@ -127,6 +132,62 @@ void CameraInfoForm::on_TreeWidgetDoubleClicked(QTreeWidgetItem *item, int index
                                                         "QScrollBar::sub-line{background:transparent;}"
                                                         "QScrollBar::add-line{background:transparent;}");
 
+    QTableWidgetItem *cellitem = nullptr;
+    ui->tableWidget->setRowCount(ui->tableWidget->rowCount()+1);
+    ui->tableWidget->setItem(0,0,cellitem = new QTableWidgetItem("显示位置"));
+
+    cellitem->setFlags(Qt::NoItemFlags);
+
+    QComboBox *displayComBox  = new QComboBox(this);
+
+    int displaycount = _cameraDeviceForm.length();
+
+    displayComBox->addItem(QString("None"));
+    int i;
+    for(i = 0; i < displaycount; i++)
+    {
+       if( _cameraDeviceForm[i]->getBindCameraIndex() != -1)
+       {
+           if(clickCamera ==  _cameraDeviceForm[i]->getBindCameraIndex())
+           {
+                displayComBox->addItem(QString("%1").arg(i));
+                displayComBox->setCurrentText(QString("%1").arg(i));
+           }
+           qDebug()<< QString("display:%1").arg(i)<<i<<"点击："<<clickCamera << _cameraDeviceForm[i]->getBindCameraIndex();
+           continue;
+       }
+
+       qDebug()<< QString("display:%1 is idle").arg(i);
+       displayComBox->addItem(QString("%1").arg(i));
+    }
+
+    ui->tableWidget->setCellWidget(0, 1, displayComBox);
+    connect(displayComBox, &QComboBox::currentTextChanged, this, &CameraInfoForm::DisplayCameraChange);
+
+
+}
+
+void CameraInfoForm::DisplayCameraChange(const QString &text)
+{
+    bool ok;
+    if(text == "None")
+    {
+
+        for(int i = 0; i < _cameraDeviceForm.length(); i++)
+        {
+            if(_cameraDeviceForm[i]->getBindCameraIndex() == _CurrentCamera)
+                _cameraDeviceForm[i]->UnbindCamera();
+        }
+        return;
+    }
+
+    int displayFormIndex = text.toInt(&ok);
+    if(!ok)
+    {
+        return;
+    }
+
+    _cameraDeviceForm[displayFormIndex]->BindCamera(_busManager[_CurrentCamera], _CurrentCamera);
 
 
 }
@@ -154,4 +215,15 @@ int CameraInfoFormTableWidgetModel::columnCount(const QModelIndex &parent) const
 {
 
     return 0;
+}
+
+ComBoxDelegate::ComBoxDelegate(QObject *parent)
+{
+
+}
+
+void ComBoxDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const
+{
+    qDebug()<<index<<model<<editor;
+
 }

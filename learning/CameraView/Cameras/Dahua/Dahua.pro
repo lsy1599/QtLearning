@@ -26,6 +26,7 @@ SOURCES += \
 
 HEADERS += \
         DahuaPlugin.h
+
 DISTFILES += Dahua.json 
 
 
@@ -50,10 +51,11 @@ DEPENDPATH += $$PWD/MVviewer/include
 
 DESTDIR =../../build/CameraPlugin/
 
+
 unix{
         MYLIBS.path=/root/CameraPlugin/lib/
         MYLIBDIR=$${PWD}/MVviewer/lib/
-        MYLIBS.files+= $${MYLIBDIR}/libMVSDK.so \
+        MYLIBFILES= $${MYLIBDIR}/libMVSDK.so \
             $${MYLIBDIR}/liblog4cpp.so.5 \
             $${MYLIBDIR}/libGCBase_gcc485_v3_0.so \
             $${MYLIBDIR}/libNodeMapData_gcc485_v3_0.so \
@@ -63,6 +65,7 @@ unix{
             $${MYLIBDIR}/libImageConvert.so \
             $${MYLIBDIR}/libMathParser_gcc485_v3_0.so \
             $${MYLIBDIR}/liblog4cpp_gcc485_v3_0.so
+        MYLIBS.files += $${MYLIBFILES}
         INSTALLS +=MYLIBS
 
         target.path = /root/CameraPlugin

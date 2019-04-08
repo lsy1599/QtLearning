@@ -41,28 +41,27 @@ void CameraDeviceForm::SelectCameraThread(CameraDeviceForm *cls)
 
 }
 
-bool CameraDeviceForm::InitCamera(CameraDevice *cameraDev)
+bool CameraDeviceForm::BindCamera(CameraDevice *cameraDev, int index)
 {
     if(cameraDev != nullptr)
     {
         _CameraUseLock.lock();
         _cameraDev = cameraDev;
+        _cameraIndex = index;
         _CameraUseLock.unlock();
         ui->Run_Button->setEnabled(true);
     }
     return true;
 }
 
-bool CameraDeviceForm::ExitCamera()
+bool CameraDeviceForm::UnbindCamera()
 {
-    if(_cameraDev != nullptr)
-    {
-        _CameraUseLock.lock();
-        _cameraDev = nullptr;
-        _CameraUseLock.unlock();
-        _isCameraAvailable = false;
-        ui->Run_Button->setEnabled(false);
-    }
+    _CameraUseLock.lock();
+    _cameraDev = nullptr;
+    _cameraIndex = -1;
+    _CameraUseLock.unlock();
+    _isCameraAvailable = false;
+    ui->Run_Button->setEnabled(false);
     return true;
 }
 
@@ -81,6 +80,11 @@ bool CameraDeviceForm::Stop()
     _cameraDev->Stop();
     _cameraDev->Close();
     return true;
+}
+
+int CameraDeviceForm::getBindCameraIndex()
+{
+    return _cameraIndex;
 }
 
 void CameraDeviceForm::SetShowLabel(QString Item, QString text)
