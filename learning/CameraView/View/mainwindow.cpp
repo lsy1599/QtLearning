@@ -35,7 +35,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     InitCameraWidget();
 
-    showMaximized();
+   // showMaximized();
 
     InitLogWidget();
 }

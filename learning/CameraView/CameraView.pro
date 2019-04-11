@@ -6,4 +6,5 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     View \
-    Cameras
+    Cameras \
+    Algorithm

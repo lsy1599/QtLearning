@@ -153,7 +153,6 @@ void CameraInfoForm::on_TreeWidgetDoubleClicked(QTreeWidgetItem *item, int Index
                 displayComBox->addItem(QString("%1").arg(i));
                 displayComBox->setCurrentText(QString("%1").arg(i));
            }
-           qDebug()<< QString("display:%1").arg(i)<<i<<"点击："<<clickCamera << _cameraDeviceForm[i]->getBindCameraIndex();
            continue;
        }
 

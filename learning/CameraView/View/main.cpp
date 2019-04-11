@@ -4,6 +4,17 @@
 #include <QTextCodec>
 #include <CameraDeviceForm.h>
 
+#include <opencv2/highgui/highgui.hpp>
+
+
+void showOpencv()
+{
+    cv::Mat img = cv::imread("./1.jpg");
+    cv::imshow("shole", img);
+    cv::waitKey(0);
+
+}
+
 int main(int argc, char *argv[])
 {
     QTextCodec *codec = QTextCodec::codecForName("utf-8");
@@ -13,6 +24,8 @@ int main(int argc, char *argv[])
    // CameraDeviceForm w;
     MainWindow w;
     w.show();
+
+
 
     return a.exec();
 }

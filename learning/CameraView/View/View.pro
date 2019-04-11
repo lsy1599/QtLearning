@@ -4,9 +4,7 @@
 #
 #-------------------------------------------------
 
-include(../share.pri)
 QT       += core gui concurrent
-
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = View
@@ -25,6 +23,22 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++11
 
+include(../opencv.pri)
+
+#opencvbuild.target=post_build_cmds
+#CONFIG(debug, debug|release): opencvbuild.commands = xcopy  $${OPENCVPATH}/lib/opencv_world401d.dll $${OUT_PWD}/../build/
+#CONFIG(release, debug|release): opencvbuild.commands  = xcopy  $${OPENCVPATH}/lib/opencv_world401.dll $${OUT_PWD}/../build/
+
+QMAKE_EXTRA_TARGETS += opencvbuild
+POST_TARGETDEPS += post_build_cmds
+
+
+
+#message($${QMAKE_POST_LINK})
+#error($${QMAKE_POST_LINK})
+
+
+
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
@@ -41,7 +55,8 @@ HEADERS += \
     CameraBusManager.h \
     CameraInfoForm.h \
     WidgetLogForm.h \
-    UIConfig.h
+    UIConfig.h \
+    AlgorithmBaseplugin.h
 
 FORMS += \
         mainwindow.ui \

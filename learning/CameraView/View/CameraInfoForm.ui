@@ -23,7 +23,6 @@
       <widget class="QTreeWidget" name="treeWidget">
        <property name="styleSheet">
         <string notr="true">background-color: rgb(170, 170, 255);
-font: 20pt &quot;Ubuntu&quot;;
 color:black;</string>
        </property>
        <column>
@@ -36,9 +35,7 @@ color:black;</string>
      <item>
       <widget class="QTableWidget" name="tableWidget">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(170, 170, 255);
-font: 20pt &quot;Ubuntu&quot;;
-color:black;</string>
+        <string notr="true">background-color: rgb(170, 170, 255);</string>
        </property>
       </widget>
      </item>
