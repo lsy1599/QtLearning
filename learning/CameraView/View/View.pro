@@ -25,17 +25,23 @@ CONFIG += c++11
 
 include(../opencv.pri)
 
-#opencvbuild.target=post_build_cmds
-#CONFIG(debug, debug|release): opencvbuild.commands = xcopy  $${OPENCVPATH}/lib/opencv_world401d.dll $${OUT_PWD}/../build/
-#CONFIG(release, debug|release): opencvbuild.commands  = xcopy  $${OPENCVPATH}/lib/opencv_world401.dll $${OUT_PWD}/../build/
 
-QMAKE_EXTRA_TARGETS += opencvbuild
-POST_TARGETDEPS += post_build_cmds
+win32 {
+    # dst_dir 最后的 \\ 是必须的，用来标示 xcopy 到一个文件夹，若不存在，创建之
+    # Replace slashes in paths with backslashes for Windows
+    #!exists($$dst_dir):system(xcopy $$src_dir $$dst_dir /y /e)
+    #system(xcopy  $${OPENCVPATH}/lib/opencv_world401.dll $${OUT_PWD}/../build/)
 
+    opencv_dst_dir=$${OUT_PWD}/../build/
+    opencv_src_file ~= s,/,\\,g
+    opencv_dst_dir ~= s,/,\\,g
 
+    opencvbuild.target=post_build_cmds
+    opencvbuild.commands=copy /y $$opencv_src_file $$opencv_dst_dir
+    QMAKE_EXTRA_TARGETS += opencvbuild
+    POST_TARGETDEPS += post_build_cmds
+}
 
-#message($${QMAKE_POST_LINK})
-#error($${QMAKE_POST_LINK})
 
 
 
