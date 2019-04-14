@@ -1,0 +1,23 @@
+<RCC>
+    <qresource prefix="/">
+        <file>backimage.jpg</file>
+        <file>draw.ico</file>
+        <file>ellipse.ico</file>
+        <file>rect.ico</file>
+        <file>open.ico</file>
+        <file>save.ico</file>
+        <file>line.ico</file>
+        <file>cursor.ico</file>
+        <file>arrows.ico</file>
+        <file>text.ico</file>
+        <file>delete.ico</file>
+        <file>settingpen.ico</file>
+        <file>pixmap.ico</file>
+        <file>zoomdown.ico</file>
+        <file>zoomup.ico</file>
+        <file>drawtool.ico</file>
+        <file>stick.ico</file>
+        <file>rotation.ico</file>
+        <file>polygon.ico</file>
+    </qresource>
+</RCC>
