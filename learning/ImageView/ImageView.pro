@@ -28,12 +28,16 @@ SOURCES += \
         main.cpp \
     AlgorithmImageGraphicsView.cpp \
     AlgorithmImageGraphicsScene.cpp \
-    AlgorithmImageGraphics.cpp
+    AlgorithmImageGraphics.cpp \
+    AlgorithmImageGraphicsItem/CanvasGraphicsItem.cpp \
+    AlgorithmImageGraphicsItem/RectGraphicsItem.cpp
 
 HEADERS += \
     AlgorithmImageGraphicsView.h \
     AlgorithmImageGraphicsScene.h \
-    AlgorithmImageGraphics.h
+    AlgorithmImageGraphics.h \
+    AlgorithmImageGraphicsItem/CanvasGraphicsItem.h \
+    AlgorithmImageGraphicsItem/RectGraphicsItem.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -36,8 +36,16 @@ win32 {
     opencv_src_file ~= s,/,\\,g
     opencv_dst_dir ~= s,/,\\,g
 
+    images_dst_dir=$$OUT_PWD/$$DESTDIR/
+    images_dst_dir ~= s,/,\\,g
+    images_src_dir=$$PWD/../image
+    images_src_dir ~= s,/,\\,g
+
+
     opencvbuild.target=post_build_cmds
     opencvbuild.commands=copy /y $$opencv_src_file $$opencv_dst_dir
+
+#                         && copy /y /s /e $$images_src_dir $$images_dst_dir
     QMAKE_EXTRA_TARGETS += opencvbuild
     POST_TARGETDEPS += post_build_cmds
 }
@@ -70,7 +78,6 @@ FORMS += \
     CameraInfoForm.ui \
     WidgetLogForm.ui
 
-DESTDIR =../build
 
 # Default rules for deployment.
 target.path = /root

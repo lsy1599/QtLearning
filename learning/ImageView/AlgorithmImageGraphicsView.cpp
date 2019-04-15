@@ -2,6 +2,7 @@
 #include <QDebug>
 #include <QPainter>
 #include <QImage>
+#include <QWheelEvent>
 
 
 AlgorithmImageGraphicsView::AlgorithmImageGraphicsView(QGraphicsScene *scene)
@@ -25,9 +26,24 @@ AlgorithmImageGraphicsView::~AlgorithmImageGraphicsView()
 
 }
 
-void AlgorithmImageGraphicsView::wheelEvent(QWheelEvent *e)
+void AlgorithmImageGraphicsView::wheelEvent(QWheelEvent *event)
 {
-
+    QGraphicsView::wheelEvent(event);
+    if (event->isAccepted())
+    {
+        return;
+    }
+    qreal unit = 0.02;
+    QMatrix mat = matrix();
+    if (event->delta() > 0)
+    {
+        mat.scale(1 + unit, 1 + unit);
+    }
+    else
+    {
+        mat.scale(1 - unit, 1 - unit);
+    }
+    setMatrix(mat);
 }
 
 void AlgorithmImageGraphicsView::dragEnterEvent(QDragEnterEvent *e)
@@ -35,6 +51,7 @@ void AlgorithmImageGraphicsView::dragEnterEvent(QDragEnterEvent *e)
 
 }
 
+#if 0
 void AlgorithmImageGraphicsView::paintEvent(QPaintEvent *e)
 {
     QPainter painter;
@@ -43,3 +60,4 @@ void AlgorithmImageGraphicsView::paintEvent(QPaintEvent *e)
     painter.drawTiledPixmap(rect(), m_tile);
     painter.end();
 }
+#endif

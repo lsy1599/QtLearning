@@ -21,7 +21,9 @@ public:
 
 
 
-
+private:
+    SHAPE meShape = CURSOR;
+    QGraphicsItem* selectItem = Q_NULLPTR;
 };
 
 #endif // ALGORITHMIMAGEGRAPHICSSCENE_H

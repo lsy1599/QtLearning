@@ -4,10 +4,20 @@ AlgorithmImageGraphicsScene::AlgorithmImageGraphicsScene(qreal x, qreal y, qreal
   QGraphicsScene(x, y, width, height, parent)
 {
 
-
+    setItemIndexMethod(QGraphicsScene::NoIndex);
 }
 
 AlgorithmImageGraphicsScene::~AlgorithmImageGraphicsScene()
 {
 
+}
+
+AlgorithmImageGraphicsScene::SHAPE AlgorithmImageGraphicsScene::getShape()
+{
+    return meShape;
+}
+
+void AlgorithmImageGraphicsScene::SetShape(AlgorithmImageGraphicsScene::SHAPE shape)
+{
+    meShape = shape;
 }

@@ -21,7 +21,7 @@ protected:
     //拖拽释放处理函数
     //void dropEvent(QDropEvent *event) Q_DECL_OVERRIDE;
 
-    void paintEvent(QPaintEvent* e) Q_DECL_OVERRIDE;
+//    void paintEvent(QPaintEvent* e) Q_DECL_OVERRIDE;
 
 private:
     QPixmap m_tile;

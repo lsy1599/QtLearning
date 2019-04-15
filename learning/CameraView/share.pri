@@ -5,5 +5,8 @@
 CONFIG += WINDOWS_X86_X64
 
 
+DESTDIR =../build
+
+
 
 
