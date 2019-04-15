@@ -2,6 +2,10 @@
 #include <QGroupBox>
 #include <QToolBar>
 #include <QActionGroup>
+#include <QDropEvent>
+#include <QDragEnterEvent>
+#include <QMimeData>
+#include <QDebug>
 
 #include "AlgorithmImageGraphics.h"
 #include "AlgorithmImageGraphicsItem/CanvasGraphicsItem.h"
@@ -17,8 +21,8 @@ AlgorithmImageGraphics::AlgorithmImageGraphics(QWidget *parent) : QWidget(parent
     QGroupBox *LeftGroup = new QGroupBox(this);
     LeftGroup->setFixedWidth(150);
 
-    GraphicsScene = new AlgorithmImageGraphicsScene(0, 0, 600,500);
-    GraphicsView  = new AlgorithmImageGraphicsView(GraphicsScene);
+    GraphicsScene = new AlgorithmImageGraphicsScene(0, 0, 600,500); //构建场景大小
+    GraphicsView  = new AlgorithmImageGraphicsView(GraphicsScene); //关联显示场景
 
     CanvasGraphicsItem *pItem = new CanvasGraphicsItem;
     GraphicsScene->addItem(pItem);
@@ -28,9 +32,7 @@ AlgorithmImageGraphics::AlgorithmImageGraphics(QWidget *parent) : QWidget(parent
     viewLayout->addWidget(LeftGroup);
     viewLayout->addWidget(ToolBar);
     viewLayout->addWidget(GraphicsView);
-
-
-
+    GraphicsView->installEventFilter(this);//注册监视对象
 }
 
 void AlgorithmImageGraphics::initToolBar()
@@ -41,7 +43,7 @@ void AlgorithmImageGraphics::initToolBar()
     ToolBar->setOrientation(Qt::Vertical);
 
     act = ToolBar->addAction(QIcon(":/root/Algorithm/Toolbar/images/cursor.ico"), QString("Rect"));
-    act->setToolTip(QStringLiteral("绘制矩形"));
+    act->setToolTip(QStringLiteral("移动"));
     act->setCheckable(true);
     shapeGroup->addAction(act);
 
@@ -50,8 +52,43 @@ void AlgorithmImageGraphics::initToolBar()
     act->setCheckable(true);
     shapeGroup->addAction(act);
 
+    setAcceptDrops(true);//设置接收拖拽事件
+
 
     connect(shapeGroup, SIGNAL(triggered(QAction*)), this, SLOT(setShape(QAction*)) );
+
+}
+
+bool AlgorithmImageGraphics::eventFilter(QObject *watched, QEvent *event)
+{
+    qDebug()<<"1";
+    if (watched == GraphicsView)
+    {
+        if (event->type() == QEvent::Drop)
+        {
+            QDropEvent* drag = (QDropEvent*)event;
+            const QMimeData* mimeData = drag->mimeData();
+            if (mimeData->hasUrls())
+            {
+                QList<QUrl> urlList = mimeData->urls();
+                if(urlList.size() > 1)
+                {
+                    return true;
+                }else{
+                    QString path = urlList.at(0).toLocalFile();
+                    if(GraphicsScene->getShape() == AlgorithmImageGraphicsScene::PIXMAP)
+                        GraphicsScene->addPixmapItem(path, drag->posF());
+                    else{ openPixmap(path);}
+                }
+            }
+            return true;
+        }else if (event->type() == QEvent::DragEnter) {
+            QDragEnterEvent* drag = (QDragEnterEvent*)event;
+            drag->acceptProposedAction();
+            return true;
+        }
+    }
+    return QWidget::eventFilter(watched, event);
 
 }
 
@@ -59,12 +96,18 @@ void AlgorithmImageGraphics::setShape(QAction *act)
 {
     if(act)
     {
-        if(act->text() == "Rect")
-        {
+        qDebug()<<act->text();
+        if(act->text() == "Rect") {
             GraphicsScene->setShape(AlgorithmImageGraphicsScene::RECT);
+        } else if (act->text() == "Cursor") {
+            GraphicsScene->setShape(AlgorithmImageGraphicsScene::CURSOR);
         }
 
-
     }
+
+}
+
+void AlgorithmImageGraphics::openPixmap(const QString &path)
+{
 
 }

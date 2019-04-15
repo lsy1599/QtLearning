@@ -1,6 +1,9 @@
 #include "AlgorithmImageGraphicsScene.h"
 #include <QGraphicsView>
+#include <QGraphicsItem>
 #include <QWheelEvent>
+#include <QMouseEvent>
+#include <QGraphicsSceneMouseEvent>
 
 AlgorithmImageGraphicsScene::AlgorithmImageGraphicsScene(qreal x, qreal y, qreal width, qreal height, QObject *parent):
   QGraphicsScene(x, y, width, height, parent)
@@ -22,6 +25,11 @@ AlgorithmImageGraphicsScene::SHAPE AlgorithmImageGraphicsScene::getShape()
 void AlgorithmImageGraphicsScene::setShape(AlgorithmImageGraphicsScene::SHAPE shape)
 {
     meShape = shape;
+}
+
+void AlgorithmImageGraphicsScene::addPixmapItem(const QString &file, const QPointF &pos)
+{
+
 }
 
 void AlgorithmImageGraphicsScene::stickItem()
@@ -90,6 +98,12 @@ void AlgorithmImageGraphicsScene::mouseMoveEvent(QGraphicsSceneMouseEvent *mouse
 
 void AlgorithmImageGraphicsScene::mousePressEvent(QGraphicsSceneMouseEvent *mouseEvent)
 {
+    QGraphicsItem *item = itemAt(mouseEvent->scenePos(), QTransform());
+    if (item != Q_NULLPTR && item->type() == 1000)
+    {
+
+    }
+
 
 }
 

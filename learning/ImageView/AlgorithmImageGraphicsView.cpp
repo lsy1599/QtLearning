@@ -5,8 +5,8 @@
 #include <QWheelEvent>
 
 
-AlgorithmImageGraphicsView::AlgorithmImageGraphicsView(QGraphicsScene *scene)
-    : QGraphicsView(scene)
+AlgorithmImageGraphicsView::AlgorithmImageGraphicsView(QGraphicsScene *scene_)
+    : QGraphicsView(scene_)
 {
 
     m_tile = QPixmap(64, 64);
@@ -18,6 +18,7 @@ AlgorithmImageGraphicsView::AlgorithmImageGraphicsView(QGraphicsScene *scene)
     pt.end();
 
 
+    scene()->setBackgroundBrush(QPixmap(":/root/Algorithm/Toolbar/images/backimage.jpg"));
 }
 
 

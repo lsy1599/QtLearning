@@ -332,6 +332,7 @@ void XYGraphicsScene::mouseMoveEvent(QGraphicsSceneMouseEvent *mouseEvent)
 
 void XYGraphicsScene::mousePressEvent(QGraphicsSceneMouseEvent *mouseEvent)
 {
+    //获取item所在的位置)
     QGraphicsItem *item = itemAt(mouseEvent->scenePos(), QTransform());
     if (item != NULL && item->type() == XYCanvasGraphicsItem::XYCANVAS)
     {

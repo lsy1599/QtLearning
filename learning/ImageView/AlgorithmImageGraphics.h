@@ -14,10 +14,14 @@ public:
     explicit AlgorithmImageGraphics(QWidget *parent = nullptr);
 
     void initToolBar();
+
+protected:
+    bool eventFilter(QObject *watched, QEvent *event);
 signals:
 
 public slots:
     void setShape(QAction *act);
+    void openPixmap(const QString &path = QString());
 
 private:
     AlgorithmImageGraphicsView*  GraphicsView;
