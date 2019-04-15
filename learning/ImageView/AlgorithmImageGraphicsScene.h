@@ -17,9 +17,24 @@ public:
     ~AlgorithmImageGraphicsScene();
 
     SHAPE getShape();
-    void  SetShape(SHAPE shape);
+    void  setShape(SHAPE shape);
 
+public slots:
+    void stickItem();
+    void zoomUpItem();
+    void zoomDownItem();
+    void rotationItem();
+    void setItemText();
+    void slotPenChanged(const QPen &pen);
+    void slotBrushChanged(const QBrush &brush);
+    void slotFontChanged(const QFont &font);
 
+protected:
+    bool event(QEvent *event);
+    void wheelEvent(QGraphicsSceneWheelEvent *ev);
+    void mouseMoveEvent(QGraphicsSceneMouseEvent *mouseEvent);
+    void mousePressEvent(QGraphicsSceneMouseEvent *mouseEvent);
+    bool paintPolygon(QEvent *event);
 
 private:
     SHAPE meShape = CURSOR;

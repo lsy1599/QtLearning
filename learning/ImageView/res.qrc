@@ -1,0 +1,23 @@
+<RCC>
+    <qresource prefix="/root/Algorithm/Toolbar">
+        <file>images/arrows.ico</file>
+        <file>images/backimage.jpg</file>
+        <file>images/cursor.ico</file>
+        <file>images/delete.ico</file>
+        <file>images/draw.ico</file>
+        <file>images/drawtool.ico</file>
+        <file>images/ellipse.ico</file>
+        <file>images/line.ico</file>
+        <file>images/open.ico</file>
+        <file>images/pixmap.ico</file>
+        <file>images/polygon.ico</file>
+        <file>images/rect.ico</file>
+        <file>images/rotation.ico</file>
+        <file>images/save.ico</file>
+        <file>images/settingpen.ico</file>
+        <file>images/stick.ico</file>
+        <file>images/text.ico</file>
+        <file>images/zoomdown.ico</file>
+        <file>images/zoomup.ico</file>
+    </qresource>
+</RCC>

@@ -29,17 +29,18 @@ SOURCES += \
     AlgorithmImageGraphicsView.cpp \
     AlgorithmImageGraphicsScene.cpp \
     AlgorithmImageGraphics.cpp \
-    AlgorithmImageGraphicsItem/CanvasGraphicsItem.cpp \
-    AlgorithmImageGraphicsItem/RectGraphicsItem.cpp
+    AlgorithmImageGraphicsItem/CanvasGraphicsItem.cpp
 
 HEADERS += \
     AlgorithmImageGraphicsView.h \
     AlgorithmImageGraphicsScene.h \
     AlgorithmImageGraphics.h \
-    AlgorithmImageGraphicsItem/CanvasGraphicsItem.h \
-    AlgorithmImageGraphicsItem/RectGraphicsItem.h
+    AlgorithmImageGraphicsItem/CanvasGraphicsItem.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    res.qrc
