@@ -8,7 +8,7 @@
 #include <QDebug>
 
 #include "AlgorithmImageGraphics.h"
-#include "AlgorithmImageGraphicsItem/CanvasGraphicsItem.h"
+#include "GraphicsItem/CanvasGraphicsItem.h"
 
 AlgorithmImageGraphics::AlgorithmImageGraphics(QWidget *parent) : QWidget(parent)
 {
@@ -22,10 +22,17 @@ AlgorithmImageGraphics::AlgorithmImageGraphics(QWidget *parent) : QWidget(parent
     LeftGroup->setFixedWidth(150);
 
     GraphicsScene = new AlgorithmImageGraphicsScene(0, 0, 600,500); //构建场景大小
+    GraphicsScene->setItemIndexMethod(QGraphicsScene::NoIndex); //线性索引
+
+
+
     GraphicsView  = new AlgorithmImageGraphicsView(GraphicsScene); //关联显示场景
 
-    CanvasGraphicsItem *pItem = new CanvasGraphicsItem;
-    GraphicsScene->addItem(pItem);
+
+   // CanvasGraphicsItem *pItem = new CanvasGraphicsItem;
+   // GraphicsScene->addItem(pItem);
+    GraphicsScene->addText("hello liuqingyang");
+    GraphicsScene->addRect(QRect(30,40,20,20));
 
 
     QHBoxLayout *viewLayout = new QHBoxLayout(this);

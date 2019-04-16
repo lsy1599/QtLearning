@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2019-04-14T00:31:43
+# Project created by QtCreator 2019-04-16T09:25:27
 #
 #-------------------------------------------------
 
@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = ImageView
+TARGET = AlgorithmEdit
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -26,16 +26,16 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-    AlgorithmImageGraphicsView.cpp \
-    AlgorithmImageGraphicsScene.cpp \
-    AlgorithmImageGraphics.cpp \
-    GraphicsItem/CanvasGraphicsItem.cpp
+        AlgorithmEdit.cpp \
+        GraphicsScene.cpp \
+        GraphicsView.cpp \
+        GraphicsItem/RectItem.cpp
 
 HEADERS += \
-    AlgorithmImageGraphicsView.h \
-    AlgorithmImageGraphicsScene.h \
-    AlgorithmImageGraphics.h \
-    GraphicsItem/CanvasGraphicsItem.h
+        AlgorithmEdit.h \
+        GraphicsScene.h \
+        GraphicsView.h \
+        GraphicsItem/RectItem.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -43,4 +43,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    res.qrc
+    images/algorithmico.qrc

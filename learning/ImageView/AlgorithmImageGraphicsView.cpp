@@ -17,7 +17,10 @@ AlgorithmImageGraphicsView::AlgorithmImageGraphicsView(QGraphicsScene *scene_)
     pt.fillRect(32, 32, 32, 32, color);
     pt.end();
 
-
+    setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);//场景重绘更新方式
+    setCacheMode(QGraphicsView::CacheBackground);//缓存模式
+    setRenderHint(QPainter::Antialiasing);//指定Render标签，抗锯齿
+    setDragMode(QGraphicsView::ScrollHandDrag);//拖动模式，鼠标可拖动
     scene()->setBackgroundBrush(QPixmap(":/root/Algorithm/Toolbar/images/backimage.jpg"));
 }
 
