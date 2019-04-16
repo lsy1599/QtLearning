@@ -29,13 +29,17 @@ SOURCES += \
         AlgorithmEdit.cpp \
         GraphicsScene.cpp \
         GraphicsView.cpp \
-        GraphicsItem/RectItem.cpp
+        GraphicsItem/RectItem.cpp \
+    GraphicsItem/ShapeItem.cpp \
+    GraphicsItem/PixmapItem.cpp
 
 HEADERS += \
         AlgorithmEdit.h \
         GraphicsScene.h \
         GraphicsView.h \
-        GraphicsItem/RectItem.h
+        GraphicsItem/RectItem.h \
+    GraphicsItem/ShapeItem.h \
+    GraphicsItem/PixmapItem.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

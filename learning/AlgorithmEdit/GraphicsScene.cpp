@@ -1,12 +1,13 @@
 #include "GraphicsScene.h"
 #include "GraphicsItem/RectItem.h"
+#include "GraphicsItem/PixmapItem.h"
 #include <QDebug>
 
 namespace ZAlgorithm {
 
 GraphicsScene::GraphicsScene()
 {
-
+    setItemIndexMethod(QGraphicsScene::NoIndex);
 }
 
 GraphicsScene::SHAPE GraphicsScene::getShape()
@@ -16,67 +17,62 @@ GraphicsScene::SHAPE GraphicsScene::getShape()
 
 void GraphicsScene::setShape(GraphicsScene::SHAPE shape)
 {
+    if(shape == PIXMAP)
+    {
+        QImage img(":/Algorithm/ico/test.jpg");
+
+    //    QGraphicsPixmapItem* pixmapItem = new QGraphicsPixmapItem(pix);
+        PixmapItem *pixmapItem = new PixmapItem();
+        addItem(pixmapItem);
+        pixmapItem->loadImage(img);
+
+        _shape = CURSOR;
+        return;
+    }
     _shape = shape;
-}
 
-bool GraphicsScene::event(QEvent *event)
-{
-    QGraphicsScene::event(event);
-
-    return true;
 }
 
 void GraphicsScene::mouseMoveEvent(QGraphicsSceneMouseEvent *mouseEvent)
 {
-    if(_selectItem != Q_NULLPTR)
+    if(_currentShapeItem && isDrawing)
     {
-        switch(_shape)
-        {
-        case RECT:
-            RectItem* rectItem = static_cast<RectItem*>(_selectItem);
-            rectItem->duringCreate(mouseEvent->scenePos());
-            qDebug()<<mouseEvent->scenePos();
-            break;
-        }
-
+        _currentShapeItem->drawing(mouseEvent);
     }
     QGraphicsScene::mouseMoveEvent(mouseEvent);
 }
 
 void GraphicsScene::mousePressEvent(QGraphicsSceneMouseEvent *mouseEvent)
 {
-    QGraphicsItem* item = getCurDrawShapeItem();
-    if(_selectItem != Q_NULLPTR)
+    switch(_shape)
     {
-        switch(_shape)
+    case RECT:
         {
-        case RECT:
-            RectItem* rectItem = static_cast<RectItem*>(_selectItem);
-            rectItem->startCreate(mouseEvent->scenePos());
+            RectItem* rect = new RectItem;
+            addItem(rect);
+            _currentShapeItem  = rect;
             break;
         }
+    default:
+        _currentShapeItem = Q_NULLPTR;
+        break;
+    }
 
+    if(_currentShapeItem)
+    {
+        _currentShapeItem->startDraw(mouseEvent);
+        isDrawing = true;
     }
 
     QGraphicsScene::mousePressEvent(mouseEvent);
 }
 
-QGraphicsItem *GraphicsScene::getCurDrawShapeItem()
+void GraphicsScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *mouseEvent)
 {
-    QGraphicsItem* item = Q_NULLPTR;
-    switch(_shape)
-    {
-    case RECT:
-        item = new RectItem;
-        this->addItem(item);
-        _selectItem  = item;
-        break;
-    default:
-        _selectItem = Q_NULLPTR;
-        break;
-    }
-    return item;
+    isDrawing = false;
+    QGraphicsScene::mouseReleaseEvent(mouseEvent);
 }
+
 
 }
 

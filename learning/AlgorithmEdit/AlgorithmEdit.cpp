@@ -49,6 +49,11 @@ void AlgorithmEdit::InitToolBar()
     ToolBar->setOrientation(Qt::Vertical);
     //ToolBar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
 
+    act = ToolBar->addAction(QIcon(":/Algorithm/ico/loadPicture_64px.ico"), QString("Pixmap"));
+    act->setToolTip(QStringLiteral("加载图片"));
+    shapeGroup->addAction(act);
+
+
     act = ToolBar->addAction(QIcon(":/Algorithm/ico/cursor.ico"), QString("Cursor"));
     act->setToolTip(QStringLiteral("移动"));
     act->setCheckable(true);
@@ -73,6 +78,8 @@ void AlgorithmEdit::setShape(QAction *act)
             Scene->setShape(GraphicsScene::RECT);
         } else if (act->text() == "Cursor") {
             Scene->setShape(GraphicsScene::CURSOR);
+        } else if (act->text() == "Pixmap") {
+            Scene->setShape(GraphicsScene::PIXMAP);
         }
 
     }

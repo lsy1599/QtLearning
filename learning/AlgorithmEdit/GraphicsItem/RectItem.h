@@ -3,17 +3,19 @@
 
 #include <QGraphicsRectItem>
 #include <QGraphicsItem>
+#include "ShapeItem.h"
 
 namespace ZAlgorithm {
 
-class RectItem: public QGraphicsRectItem
+class RectItem: public ShapeItem, public QGraphicsRectItem
 {
 public:
     explicit RectItem(QGraphicsItem* parent = Q_NULLPTR);
 
-    void startCreate(const QPointF &pos);
-    void duringCreate(const QPointF &pos);
-    void endCreate(const QPointF &pos);
+
+    void startDraw(QGraphicsSceneMouseEvent * event);
+    void drawing(QGraphicsSceneMouseEvent * event);
+
 protected:
     void mousePressEvent  (QGraphicsSceneMouseEvent* event);
     void mouseMoveEvent   (QGraphicsSceneMouseEvent* event);
@@ -21,9 +23,12 @@ protected:
 
     int type() const;
 
+
+
+
 private:
-    QPointF  _startPos;
-    QPointF  _endPos;
+    QPointF  startPos;
+    QPointF  endPos;
 
     QPointF m_centerPointF;
     bool m_bResizing = false;

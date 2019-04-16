@@ -12,7 +12,7 @@ GraphicsView::GraphicsView(QGraphicsScene *scene)
     setRenderHint(QPainter::Antialiasing);//指定Render标签，抗锯齿
     setCacheMode(QGraphicsView::CacheBackground);//缓存模式
     setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);//场景重绘更新方式
-  //  setDragMode(QGraphicsView::ScrollHandDrag);//拖动模式，鼠标可拖动
+ //   setDragMode(QGraphicsView::ScrollHandDrag);//拖动模式，鼠标可拖动
 }
 
 GraphicsView::~GraphicsView()

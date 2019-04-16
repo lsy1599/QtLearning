@@ -3,6 +3,7 @@
 
 #include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>
+#include "GraphicsItem/ShapeItem.h"
 
 namespace ZAlgorithm {
 
@@ -18,6 +19,7 @@ public:
         PATH,    //路径
         ELLIPSE, //椭圆
         DELETE,  //删除
+        PIXMAP,  //图片
     };
     GraphicsScene();
 
@@ -25,17 +27,17 @@ public:
     void  setShape(SHAPE shape);
 
 protected:
-    bool event(QEvent* event);
     void mouseMoveEvent(QGraphicsSceneMouseEvent *mouseEvent);
     void mousePressEvent(QGraphicsSceneMouseEvent *mouseEvent);
+    void mouseReleaseEvent(QGraphicsSceneMouseEvent *mouseEvent);
 
 private:
-    QGraphicsItem *getCurDrawShapeItem();
 
 
 private:
     SHAPE _shape = CURSOR;
-    QGraphicsItem *_selectItem = Q_NULLPTR;
+    ShapeItem *_currentShapeItem = Q_NULLPTR;
+    bool isDrawing = false;
 };
 
 }

@@ -19,5 +19,7 @@
         <file>text.ico</file>
         <file>zoomdown.ico</file>
         <file>zoomup.ico</file>
+        <file>test.jpg</file>
+        <file>loadPicture_64px.ico</file>
     </qresource>
 </RCC>

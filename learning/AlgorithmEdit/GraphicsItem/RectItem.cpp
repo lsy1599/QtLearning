@@ -25,23 +25,19 @@ RectItem::RectItem(QGraphicsItem *parent)
     setFlags(QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemIsMovable);
 }
 
-void RectItem::startCreate(const QPointF &pos)
+void RectItem::startDraw(QGraphicsSceneMouseEvent *event)
 {
-    _startPos = pos;
-    _endPos = pos;
-    setRect(_startPos.x(), _startPos.y(), 0, 0);
+    startPos = event->scenePos();
+    setRect(QRectF(event->scenePos(), QSizeF(0,0)));
 }
 
-void RectItem::duringCreate(const QPointF &pos)
+void RectItem::drawing(QGraphicsSceneMouseEvent *event)
 {
-    _endPos = pos;
-    setRect(_startPos.x(), _startPos.y(), _endPos.x() - _startPos.x() , _endPos.y() - _startPos.y());
-}
-
-void RectItem::endCreate(const QPointF &pos)
-{
-    _endPos = pos;
-    setRect(_startPos.x(), _startPos.y(), _endPos.x() - _startPos.x() , _endPos.y() - _startPos.y());
+    QRectF l(qMin(startPos.x(), event->scenePos().x()),
+                              qMin(startPos.y(), event->scenePos().y()),
+                              qAbs(startPos.x() - event->scenePos().x()),
+                              qAbs(startPos.y() - event->scenePos().y()));
+    setRect(l);
 }
 
 void RectItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
@@ -58,21 +54,17 @@ void RectItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
             QPointF topLeft = boundingRect().topLeft();
             m_centerPointF = QPointF(topLeft.x() + pos().x() + radius, topLeft.y() + pos().y() + radius);
             QPointF pos = event->scenePos();
-            qDebug()<<" Custom item left clicked with alt key"  << boundingRect() << radius << this->pos() << pos << event->pos();
             double dist = sqrt(pow(m_centerPointF.x()-pos.x(), 2) + pow(m_centerPointF.y()-pos.y(), 2));
             if (dist / radius > 0.8) {
-                qDebug() << dist << radius << dist / radius;
                 m_bResizing = true;
             } else {
                 m_bResizing = false;
             }
         } else {
-            qDebug() << "Custom item left clicked.";
             QGraphicsItem::mousePressEvent(event);
             event->accept();
         }
     } else if (event->button() == Qt::RightButton) {
-        qDebug() << "Custom item right clicked.";
         event->ignore();
     }
 
@@ -85,9 +77,7 @@ void RectItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
         double dist = sqrt(pow(m_centerPointF.x()-pos.x(), 2) + pow(m_centerPointF.y()-pos.y(), 2));
         setRect(m_centerPointF.x()-this->pos().x()-dist, m_centerPointF.y()-this->pos().y()-dist, dist*2, dist*2);
     } else if(event->modifiers() != Qt::AltModifier) {
-        qDebug() << "Custom item moved.";
         QGraphicsItem::mouseMoveEvent(event);
-        qDebug() << "moved" << pos();
     }
 }
 
