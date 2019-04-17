@@ -31,7 +31,7 @@ private:
     QPointF  endPos;
 
     QPointF m_centerPointF;
-    bool m_bResizing = false;
+    bool m_Resizing = false;
 };
 
 }

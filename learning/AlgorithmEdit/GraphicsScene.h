@@ -3,6 +3,8 @@
 
 #include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>
+#include <QResizeEvent>
+#include <QWheelEvent>
 #include "GraphicsItem/ShapeItem.h"
 
 namespace ZAlgorithm {
@@ -30,6 +32,8 @@ protected:
     void mouseMoveEvent(QGraphicsSceneMouseEvent *mouseEvent);
     void mousePressEvent(QGraphicsSceneMouseEvent *mouseEvent);
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *mouseEvent);
+    void resizeEvent(QGraphicsSceneResizeEvent *Event);
+    void wheelEvent(QGraphicsSceneWheelEvent *mouseEvent);
 
 private:
 

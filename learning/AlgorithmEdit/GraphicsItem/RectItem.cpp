@@ -22,7 +22,11 @@ RectItem::RectItem(QGraphicsItem *parent)
     setBrush(QColor(0, 0, 0, 0)); //最后一位是透明度
 
     //可选择、可移动
-    setFlags(QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemIsMovable);
+    setFlags(QGraphicsItem::ItemIsSelectable
+             | QGraphicsItem::ItemIsMovable
+             | QGraphicsItem::ItemSendsGeometryChanges
+             | QGraphicsItem::ItemIsFocusable
+             );
 }
 
 void RectItem::startDraw(QGraphicsSceneMouseEvent *event)
@@ -45,20 +49,17 @@ void RectItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
     if (event->button() == Qt::LeftButton)
     {
         if (event->modifiers() == Qt::ShiftModifier) {
-            qDebug() << "Custom item left clicked with shift key.";
-            // 选中 item
             setSelected(true);
         } else if (event->modifiers() == Qt::AltModifier) {
-            // 重置 item 大小
             double radius = boundingRect().width() / 2.0;
             QPointF topLeft = boundingRect().topLeft();
             m_centerPointF = QPointF(topLeft.x() + pos().x() + radius, topLeft.y() + pos().y() + radius);
             QPointF pos = event->scenePos();
             double dist = sqrt(pow(m_centerPointF.x()-pos.x(), 2) + pow(m_centerPointF.y()-pos.y(), 2));
             if (dist / radius > 0.8) {
-                m_bResizing = true;
+                m_Resizing = true;
             } else {
-                m_bResizing = false;
+                m_Resizing = false;
             }
         } else {
             QGraphicsItem::mousePressEvent(event);
@@ -72,7 +73,7 @@ void RectItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
 void RectItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
-    if ((event->modifiers() == Qt::AltModifier) && m_bResizing) {
+    if ((event->modifiers() == Qt::AltModifier) && m_Resizing) {
         QPointF pos = event->scenePos();
         double dist = sqrt(pow(m_centerPointF.x()-pos.x(), 2) + pow(m_centerPointF.y()-pos.y(), 2));
         setRect(m_centerPointF.x()-this->pos().x()-dist, m_centerPointF.y()-this->pos().y()-dist, dist*2, dist*2);
@@ -83,8 +84,8 @@ void RectItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 
 void RectItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
-    if ((event->modifiers() == Qt::AltModifier) && m_bResizing) {
-        m_bResizing = false;
+    if ((event->modifiers() == Qt::AltModifier) && m_Resizing) {
+        m_Resizing = false;
     } else {
         QGraphicsItem::mouseReleaseEvent(event);
     }

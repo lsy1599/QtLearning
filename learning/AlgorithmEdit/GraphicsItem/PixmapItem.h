@@ -15,6 +15,7 @@ public:
     void drawing(QGraphicsSceneMouseEvent * event);
 
     void loadImage(QImage &img);
+    void wheelEvent(QGraphicsSceneWheelEvent *mouseEvent);
 };
 
 }

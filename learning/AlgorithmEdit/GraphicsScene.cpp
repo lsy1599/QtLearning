@@ -73,6 +73,17 @@ void GraphicsScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *mouseEvent)
     QGraphicsScene::mouseReleaseEvent(mouseEvent);
 }
 
+void GraphicsScene::resizeEvent(QGraphicsSceneResizeEvent *Event)
+{
+    qDebug()<<Event->newSize();
+
+}
+
+void GraphicsScene::wheelEvent(QGraphicsSceneWheelEvent *mouseEvent)
+{
+    QGraphicsScene::wheelEvent(mouseEvent);
+}
+
 
 }
 
