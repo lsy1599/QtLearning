@@ -13,13 +13,12 @@ AlgorithmEdit::AlgorithmEdit(QWidget *parent)
 {
     InitToolBar();
 
-    setMinimumSize(800, 600);
+    setMinimumSize(400, 360);
     QGroupBox *LeftGroup = new QGroupBox(this);
     LeftGroup->setFixedWidth(150);
 
     Scene = new GraphicsScene();
     View  = new GraphicsView(Scene);
-
 
 #if 0
     RectItem* rectItem = new RectItem();

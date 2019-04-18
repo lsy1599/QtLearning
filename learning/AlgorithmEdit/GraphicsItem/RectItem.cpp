@@ -4,6 +4,7 @@
 #include <QColor>
 #include <QGraphicsSceneMouseEvent>
 #include <QDebug>
+#include <math.h>
 
 
 namespace ZAlgorithm {
@@ -73,6 +74,7 @@ void RectItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
 void RectItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
+    qDebug()<<__FILE__<<__FUNCTION__<<event->pos();
     if ((event->modifiers() == Qt::AltModifier) && m_Resizing) {
         QPointF pos = event->scenePos();
         double dist = sqrt(pow(m_centerPointF.x()-pos.x(), 2) + pow(m_centerPointF.y()-pos.y(), 2));
@@ -84,11 +86,25 @@ void RectItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 
 void RectItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
+    qDebug()<<__FILE__<<__FUNCTION__<<event->pos();
     if ((event->modifiers() == Qt::AltModifier) && m_Resizing) {
         m_Resizing = false;
     } else {
         QGraphicsItem::mouseReleaseEvent(event);
     }
+}
+
+void RectItem::dragEnterEvent(QGraphicsSceneDragDropEvent *event)
+{
+    qDebug()<<__FILE__<<__FUNCTION__<<event->pos();
+    qDebug()<<event->pos();
+}
+
+void RectItem::dropLeaveEvent(QGraphicsSceneDragDropEvent *event)
+{
+
+    qDebug()<<__FILE__<<__FUNCTION__<<event->pos();
+    qDebug()<<event->pos();
 }
 
 int RectItem::type() const

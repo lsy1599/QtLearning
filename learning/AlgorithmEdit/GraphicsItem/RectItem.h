@@ -21,6 +21,9 @@ protected:
     void mouseMoveEvent   (QGraphicsSceneMouseEvent* event);
     void mouseReleaseEvent(QGraphicsSceneMouseEvent* event);
 
+    void dragEnterEvent(QGraphicsSceneDragDropEvent* event);
+    void dropLeaveEvent(QGraphicsSceneDragDropEvent* event);
+
     int type() const;
 
 

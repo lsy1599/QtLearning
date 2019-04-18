@@ -31,11 +31,6 @@ void PixmapItem::loadImage(QImage &img)
                 (scene()->height() - img.height())/2 );
 }
 
-void PixmapItem::wheelEvent(QGraphicsSceneWheelEvent *mouseEvent)
-{
-    qDebug()<<mouseEvent->scenePos();
-
-}
 
 
 

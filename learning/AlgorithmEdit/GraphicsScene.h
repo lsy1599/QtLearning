@@ -35,6 +35,9 @@ protected:
     void resizeEvent(QGraphicsSceneResizeEvent *Event);
     void wheelEvent(QGraphicsSceneWheelEvent *mouseEvent);
 
+    void dragEnterEvent(QGraphicsSceneDragDropEvent* Event);
+    void dropLeaveEvent(QGraphicsSceneDragDropEvent* Event);
+
 private:
 
 

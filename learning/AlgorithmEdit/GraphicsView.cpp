@@ -7,7 +7,6 @@ namespace ZAlgorithm {
 GraphicsView::GraphicsView(QGraphicsScene *scene)
     :QGraphicsView(scene)
 {
-
     m_tile = QPixmap(64, 64);
     m_tile.fill(Qt::white);
     QPainter pt(&m_tile);

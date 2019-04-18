@@ -8,6 +8,10 @@ namespace ZAlgorithm {
 GraphicsScene::GraphicsScene()
 {
     setItemIndexMethod(QGraphicsScene::NoIndex);
+
+    RectItem* rect = new RectItem;
+    addItem(rect);
+    rect->setRect(0,0,20,20);
 }
 
 GraphicsScene::SHAPE GraphicsScene::getShape()
@@ -35,6 +39,8 @@ void GraphicsScene::setShape(GraphicsScene::SHAPE shape)
 
 void GraphicsScene::mouseMoveEvent(QGraphicsSceneMouseEvent *mouseEvent)
 {
+    QGraphicsScene::mouseMoveEvent(mouseEvent);
+    return;
     if(_currentShapeItem && isDrawing)
     {
         _currentShapeItem->drawing(mouseEvent);
@@ -44,6 +50,16 @@ void GraphicsScene::mouseMoveEvent(QGraphicsSceneMouseEvent *mouseEvent)
 
 void GraphicsScene::mousePressEvent(QGraphicsSceneMouseEvent *mouseEvent)
 {
+
+    QGraphicsScene::mousePressEvent(mouseEvent);
+    return;
+    if(selectedItems().size() > 0)
+    {
+        QGraphicsScene::mousePressEvent(mouseEvent);
+        return;
+    }
+
+
     switch(_shape)
     {
     case RECT:
@@ -82,6 +98,18 @@ void GraphicsScene::resizeEvent(QGraphicsSceneResizeEvent *Event)
 void GraphicsScene::wheelEvent(QGraphicsSceneWheelEvent *mouseEvent)
 {
     QGraphicsScene::wheelEvent(mouseEvent);
+}
+
+void GraphicsScene::dragEnterEvent(QGraphicsSceneDragDropEvent *Event)
+{
+    qDebug()<<__FILE__<<__FUNCTION__<<Event->pos();
+    QGraphicsScene::dragEnterEvent(Event);
+}
+
+void GraphicsScene::dropLeaveEvent(QGraphicsSceneDragDropEvent *Event)
+{
+    qDebug()<<__FILE__<<__FUNCTION__<<Event->pos();
+    QGraphicsScene::dragLeaveEvent(Event);
 }
 
 
