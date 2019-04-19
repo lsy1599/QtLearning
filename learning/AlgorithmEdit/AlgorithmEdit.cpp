@@ -27,8 +27,6 @@ AlgorithmEdit::AlgorithmEdit(QWidget *parent)
     Scene->addText("hello");
 #endif
 
-
-
     QHBoxLayout *viewLayout = new QHBoxLayout(this);
     viewLayout->addWidget(LeftGroup);
     viewLayout->addWidget(ToolBar);
