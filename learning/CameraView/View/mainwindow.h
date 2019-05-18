@@ -25,6 +25,7 @@ public:
     void InitHomeWidget();
     void InitCameraWidget();
     void InitLogWidget();
+    void InitAlgorithmEditWidget();
 
     void AutoBridgeConnectionCamera();
     void     BridgeConnectionCamera();

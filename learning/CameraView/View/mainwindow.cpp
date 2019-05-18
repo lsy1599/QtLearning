@@ -14,6 +14,7 @@
 #include <CameraInfoForm.h>
 #include <WidgetLogForm.h>
 #include <UIConfig.h>
+#include "AlgorithmEdit/AlgorithmEdit.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -35,9 +36,14 @@ MainWindow::MainWindow(QWidget *parent) :
 
     InitCameraWidget();
 
-   // showMaximized();
+
+    InitAlgorithmEditWidget();
 
     InitLogWidget();
+
+
+
+   // showMaximized();
 }
 
 
@@ -52,7 +58,7 @@ void MainWindow::InitHomeWidget()
     CameraDeviceForm* cameraDeviceForm;
 
     UIConfig uiconfig;
-    int cameraDeviceNumber = uiconfig.value("MainWindows/Cameras", "2").toInt();
+    int cameraDeviceNumber = uiconfig.value("MainWindows/Cameras", "1").toInt();
 
 
     int cameraDeviceCols =  (cameraDeviceNumber + 1)/2;
@@ -105,6 +111,15 @@ void MainWindow::InitLogWidget()
     QGridLayout *gridlayout = new QGridLayout(LogWidget);
     WidgetLogForm *logForm = new WidgetLogForm(this);
     gridlayout->addWidget(logForm);
+}
+
+void MainWindow::InitAlgorithmEditWidget()
+{
+    QWidget* widget = new QWidget(this);
+    ui->tabWidgetMain->addTab(widget,tr("AlgorithmEdit"));
+    QGridLayout *gridlayout = new QGridLayout(widget);
+    ZAlgorithm::AlgorithmEdit *edit = new ZAlgorithm::AlgorithmEdit(this);
+    gridlayout->addWidget(edit);
 }
 
 void MainWindow::AutoBridgeConnectionCamera()

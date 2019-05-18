@@ -60,7 +60,13 @@ SOURCES += \
     CameraBusManager.cpp \
     CameraInfoForm.cpp \
     WidgetLogForm.cpp \
-    UIConfig.cpp
+    UIConfig.cpp \
+    AlgorithmEdit/AlgorithmEdit.cpp \
+    AlgorithmEdit/GraphicsScene.cpp \
+    AlgorithmEdit/GraphicsView.cpp \
+    AlgorithmEdit/GraphicsItem/PixmapItem.cpp \
+    AlgorithmEdit/GraphicsItem/RectItem.cpp \
+    AlgorithmEdit/GraphicsItem/ShapeItem.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -70,7 +76,13 @@ HEADERS += \
     CameraInfoForm.h \
     WidgetLogForm.h \
     UIConfig.h \
-    AlgorithmBaseplugin.h
+    AlgorithmBaseplugin.h \
+    AlgorithmEdit/AlgorithmEdit.h \
+    AlgorithmEdit/GraphicsScene.h \
+    AlgorithmEdit/GraphicsView.h \
+    AlgorithmEdit/GraphicsItem/PixmapItem.h \
+    AlgorithmEdit/GraphicsItem/RectItem.h \
+    AlgorithmEdit/GraphicsItem/ShapeItem.h
 
 FORMS += \
         mainwindow.ui \
@@ -84,4 +96,5 @@ target.path = /root
 INSTALLS += target
 
 RESOURCES += \
-    res.qrc
+    res.qrc \
+    AlgorithmEdit/images/algorithmico.qrc
